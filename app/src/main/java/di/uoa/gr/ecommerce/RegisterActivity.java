@@ -1,12 +1,20 @@
 package di.uoa.gr.ecommerce;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
+
+import di.uoa.gr.ecommerce.client.RestAPI;
+import di.uoa.gr.ecommerce.client.RestClient;
+import di.uoa.gr.ecommerce.rest.User;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -50,9 +58,79 @@ public class RegisterActivity extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent reg = new Intent(RegisterActivity.this, HomeActivity.class);
-                startActivity(reg);
+                String[] params = {username.getText().toString(), password.getText().toString(), cpassword.getText().toString(), name.getText().toString(), surname.getText().toString(), email.getText().toString(),telephone.getText().toString(), afm.getText().toString(), address.getText().toString(), country.getText().toString(), gloc.getText().toString()};
+
+                new RegisterTask().execute(params);
+                //Intent reg = new Intent(RegisterActivity.this, HomeActivity.class);
+                //startActivity(reg);
             }
         });
+    }
+
+    public class RegisterTask extends AsyncTask<String[], Void, User> {
+
+        @Override
+        protected User doInBackground(String[]... params) {
+            RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
+            try {
+                if (!AESCrypt.encrypt(params[0][1]).equals(AESCrypt.encrypt(params[0][2])))
+                    return null;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+            User newUser = new User();
+            System.out.println("check 1");
+            newUser.setUsername(params[0][0]);
+            try {
+                newUser.setPassword(AESCrypt.encrypt(params[0][1]).trim());
+                System.out.println(newUser.getPassword()+" 111111111");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+
+            newUser.setName(params[0][3]);
+            newUser.setSurname(params[0][4]);
+            newUser.setEmail(params[0][5]);
+            newUser.setTelephone(Long.valueOf(params[0][6]));
+            newUser.setAfm(Long.valueOf(params[0][7]));
+            newUser.setAddress(params[0][8]);
+            newUser.setCountry(params[0][9]);
+            newUser.setLocation(params[0][10]);
+            System.out.println("NUser is "+newUser.toString());
+            Call<String> call = restAPI.register(newUser);
+            try {
+                Response<String> resp = call.execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+            return newUser;
+        }
+
+        @Override
+        protected void onPostExecute(User newUser) {
+            if (newUser!=null) {
+                try {
+
+                    new LoginTask(getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("error in post execution of register");
+            }
+            //        MainActivity.this.token = retToken;
+            //        if (token != null && !token.equals("not")) {
+            //            System.out.println(token);
+            //            SharedPreferences.Editor editor = getSharedPreferences("jwt", MODE_PRIVATE).edit();
+            //            editor.putString("jwt",retToken);
+            //            editor.apply();
+            //            Intent login = new Intent (MainActivity.this, HomeActivity.class);
+            //            startActivity(login);
+            //        }
+        }
     }
 }

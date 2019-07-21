@@ -6,39 +6,29 @@ package di.uoa.gr.ecommerce.rest;
 
 public class User {
 
-    private int id;
-
-    private String fname;
-
-    private String lname;
-
     private String username;
 
-    private Role role;
+//    private Role role;
 
-    public int getId() {
-        return id;
-    }
+    private String password;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String name;
 
-    public String getFname() {
-        return fname;
-    }
+    private String surname;
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
+    private String email;
 
-    public String getLname() {
-        return lname;
-    }
+    private Long telephone;
 
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
+    private String address;
+
+    private String location;
+
+    private String country;
+
+    private Long afm;
+
+    private Long rating;
 
     public String getUsername() {
         return username;
@@ -48,38 +38,92 @@ public class User {
         this.username = username;
     }
 
-    public Role getRole() {
-        return role;
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return username.equals(user.username);
-
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public int hashCode() {
-        return username.hashCode();
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", fname='" + fname + '\'' +
-                ", lname='" + lname + '\'' +
-                ", username='" + username + '\'' +
-                ", role=" + role +
-                '}';
+    public String getSurname() {
+        return surname;
     }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Long getAfm() {
+        return afm;
+    }
+
+    public void setAfm(Long afm) {
+        this.afm = afm;
+    }
+
+    public Long getRating() {
+        return rating;
+    }
+
+    public void setRating(Long rating) {
+        this.rating = rating;
+    }
+
 }
