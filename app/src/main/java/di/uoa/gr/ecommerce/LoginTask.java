@@ -30,7 +30,7 @@ public class LoginTask extends AsyncTask<String, Void, String> {
                 RestClient.getStringClient().create(RestAPI.class);
         Login login = new Login();
         login.setUsername(params[0]);
-        login.setPassword(params[1]);
+        login.setPassword(params[1].trim());
         System.out.println(login.getPassword()+ "_"+login.getUsername());
         Call<String> call = restAPI.login(login);
         try {

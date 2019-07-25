@@ -28,5 +28,5 @@ public interface RestAPI {
     Call<String> login (@Body Login login);
 
     @POST("user")
-    Call<String> register (@Body User user);
+    Call<Integer> register (@Body User user);
 }

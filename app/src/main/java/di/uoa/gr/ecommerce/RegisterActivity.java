@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.IOException;
 
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;
 import di.uoa.gr.ecommerce.rest.User;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -73,23 +73,23 @@ public class RegisterActivity extends AppCompatActivity {
         protected User doInBackground(String[]... params) {
             RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
             try {
-                if (!AESCrypt.encrypt(params[0][1]).equals(AESCrypt.encrypt(params[0][2])))
+                if (!AESCrypt.encrypt(params[0][1]).equals(AESCrypt.encrypt(params[0][2]))){
+                    RegisterActivity.this.runOnUiThread(new Runnable() { public void run() {
+                        Toast.makeText(RegisterActivity.this,"Passwords do not match",Toast.LENGTH_SHORT).show();}});
                     return null;
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
             }
-            User newUser = new User();
-            System.out.println("check 1");
+            final User newUser = new User();
             newUser.setUsername(params[0][0]);
             try {
                 newUser.setPassword(AESCrypt.encrypt(params[0][1]).trim());
-                System.out.println(newUser.getPassword()+" 111111111");
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
             }
-
             newUser.setName(params[0][3]);
             newUser.setSurname(params[0][4]);
             newUser.setEmail(params[0][5]);
@@ -99,29 +99,87 @@ public class RegisterActivity extends AppCompatActivity {
             newUser.setCountry(params[0][9]);
             newUser.setLocation(params[0][10]);
             System.out.println("NUser is "+newUser.toString());
-            Call<String> call = restAPI.register(newUser);
-            try {
+            Call<Integer> call = restAPI.register(newUser);
+            ((Call) call).enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    if(response.isSuccessful()){
+                        int res = (Integer) response.body();
+                        System.out.println(res);
+                        switch (res) {
+                            case 0:
+                                try {
+                                    new LoginTask(getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Toast.makeText(RegisterActivity.this,"Username already used",Toast.LENGTH_SHORT).show();
+                                break;
+                            case 2:
+                                Toast.makeText(RegisterActivity.this,"Email already used",Toast.LENGTH_SHORT).show();
+                                break;
+                            default:
+                                Toast.makeText(RegisterActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else{
+//                        APIError error=ErrorUtils.parseError(response);
+                        Toast.makeText(RegisterActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    Toast.makeText(RegisterActivity.this,"Server connection error",Toast.LENGTH_SHORT).show();
+                }
+            });
+            /*Call<User> call = restAPI.register(newUser);
+            call.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if(response.isSuccessful()){
+                        try {
+                            System.out.println("HHHEHEHE");
+                            new LoginTask(getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else{
+                        Toast.makeText(RegisterActivity.this,"server returned error",Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+                    Toast.makeText(RegisterActivity.this,"server connection error",Toast.LENGTH_SHORT).show();
+                }
+            });
+            */
+
+            /*try {
                 Response<String> resp = call.execute();
             } catch (IOException e) {
+                System.out.println("OUPS");
                 e.printStackTrace();
                 return null;
-            }
-            return newUser;
+            }*/
+            return null;
         }
 
         @Override
         protected void onPostExecute(User newUser) {
-            if (newUser!=null) {
+            /*if (newUser!=null) {
                 try {
-
                     new LoginTask(getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
                 System.out.println("error in post execution of register");
-            }
+            }*/
             //        MainActivity.this.token = retToken;
             //        if (token != null && !token.equals("not")) {
             //            System.out.println(token);
