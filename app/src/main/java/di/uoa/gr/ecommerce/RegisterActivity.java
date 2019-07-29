@@ -120,13 +120,16 @@ public class RegisterActivity extends AppCompatActivity {
                             case 2:
                                 Toast.makeText(RegisterActivity.this,"Email already used",Toast.LENGTH_SHORT).show();
                                 break;
+                            case 3:
+                                Toast.makeText(RegisterActivity.this,"AFM already used",Toast.LENGTH_SHORT).show();
+                                break;
                             default:
-                                Toast.makeText(RegisterActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this,"Unknown error",Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
 //                        APIError error=ErrorUtils.parseError(response);
-                        Toast.makeText(RegisterActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"Unknown error",Toast.LENGTH_SHORT).show();
                     }
                 }
 
