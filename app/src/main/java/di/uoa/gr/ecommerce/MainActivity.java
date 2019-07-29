@@ -96,6 +96,14 @@ public class    MainActivity extends AppCompatActivity {
             startActivity(reg);
             }
         });
+
+        Guest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reg = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(reg);
+            }
+        });
     }
 
     /*public void login(View view)
