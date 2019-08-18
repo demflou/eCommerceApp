@@ -83,7 +83,14 @@ public class    MainActivity extends AppCompatActivity {
             public void onClick(View v) {
             try {
                 new LoginTask(getApplicationContext()).execute(username.getText().toString(), AESCrypt.encrypt(password.getText().toString()));
+
+//                SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+//                String restoredText = prefs.getString("jwt", null);
+//                System.out.println("main jwt on click = "+restoredText);
+                Intent login = new Intent (getApplicationContext(), HomeActivity.class);
+                startActivity(login);
             } catch (Exception e) {
+
                 e.printStackTrace();
             }
             }

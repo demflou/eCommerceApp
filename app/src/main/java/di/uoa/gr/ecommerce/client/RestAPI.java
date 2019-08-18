@@ -3,8 +3,11 @@ package di.uoa.gr.ecommerce.client;
 
 import di.uoa.gr.ecommerce.rest.Login;
 import di.uoa.gr.ecommerce.rest.User;
+import di.uoa.gr.ecommerce.rest.myItem;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface RestAPI {
@@ -29,4 +32,10 @@ public interface RestAPI {
 
     @POST("user")
     Call<Integer> register (@Body User user);
+
+    @POST("item")
+    Call<Integer> createAuction(@Header("Authorization") String token, @Body myItem item);
+
+    @POST("images")
+    Call<Void> postImage(@Header("Authorization") String token, @Body RequestBody body);
 }
