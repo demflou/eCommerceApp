@@ -109,7 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                         switch (res) {
                             case 0:
                                 try {
-                                    new LoginTask(getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
+                                    new LoginTask(RegisterActivity.this,getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

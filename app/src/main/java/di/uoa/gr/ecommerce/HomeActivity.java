@@ -118,6 +118,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
@@ -140,6 +141,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+
+    Toolbar toolbar;
     ImageView imageToUpload;
     Button bUI;
     EditText iName;
@@ -156,6 +159,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_item);
+        toolbar = (Toolbar) findViewById(R.id.toolbarshow);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(jwt==null) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 //        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);

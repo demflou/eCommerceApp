@@ -12,17 +12,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/Title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
-            android:text="Create an Auction"
-            android:textSize="50sp"
-            android:textStyle="italic"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarshow"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="DiBay"
+            app:popupTheme="@style/MyMaterialTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
             android:id="@+id/NameItem"
@@ -36,7 +36,7 @@
             android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Title" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbarshow" />
 
         <EditText
             android:id="@+id/StartingPrice"

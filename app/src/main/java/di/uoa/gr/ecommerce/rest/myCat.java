@@ -18,6 +18,9 @@ public class myCat {
         return itemCollection;
     }
 
+    public myCat() {
+    }
+
     public myCat(String name) {
         this.name = name;
     }

@@ -1,6 +1,8 @@
 package di.uoa.gr.ecommerce;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
@@ -16,7 +18,10 @@ import static android.content.Context.MODE_PRIVATE;
 public class LoginTask extends AsyncTask<String, Void, String> {
 
     private Context mContext;
-    public LoginTask(Context context){
+    private Activity activity;
+
+    public LoginTask(Activity activity,Context context){
+        this.activity=activity;
         this.mContext = context;
     }
 
@@ -63,6 +68,8 @@ public class LoginTask extends AsyncTask<String, Void, String> {
                     editor.putString("jwt",retToken);
                     editor.apply();
                     System.out.println(editor.commit()+" coomit true");
+//                    Intent login = new Intent (mContext, Menu.class);
+//                    mContext.startActivity(login);
                 }
             }
 
@@ -83,5 +90,6 @@ public class LoginTask extends AsyncTask<String, Void, String> {
 //            editor.apply();
 //            System.out.println(editor.commit()+" coomit true");
 //        }
+        activity.startActivity(new Intent(activity, Menu.class));
     }
 }

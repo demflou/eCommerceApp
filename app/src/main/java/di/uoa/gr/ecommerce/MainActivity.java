@@ -82,13 +82,13 @@ public class    MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             try {
-                new LoginTask(getApplicationContext()).execute(username.getText().toString(), AESCrypt.encrypt(password.getText().toString()));
+                new LoginTask(MainActivity.this,getApplicationContext()).execute(username.getText().toString(), AESCrypt.encrypt(password.getText().toString()));
 
 //                SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
 //                String restoredText = prefs.getString("jwt", null);
 //                System.out.println("main jwt on click = "+restoredText);
-                Intent login = new Intent (getApplicationContext(), HomeActivity.class);
-                startActivity(login);
+//                Intent login = new Intent (getApplicationContext(), Menu.class);
+//                startActivity(login);
             } catch (Exception e) {
 
                 e.printStackTrace();
@@ -107,8 +107,8 @@ public class    MainActivity extends AppCompatActivity {
         Guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent reg = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(reg);
+            Intent reg = new Intent(MainActivity.this, Menu.class);
+            startActivity(reg);
             }
         });
     }

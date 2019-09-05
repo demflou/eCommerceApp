@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v19/values-v19.xml",
+            "map": [
+                {
+                    "source": "/home/kc/.gradle/caches/transforms-2/files-2.1/31acfad8dbfe3fdee9c0ba6477e471cf/res/values-v19/values-v19.xml",
+                    "from": {
+                        "startLines": "4,5",
+                        "startColumns": "4,4",
+                        "startOffsets": "185,228",
+                        "endColumns": "42,41",
+                        "endOffsets": "223,265"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,98",
+                        "endColumns": "42,41",
+                        "endOffsets": "93,135"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,246 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+MERGED from [andhradroid.dev:aFilechooser:1.0.1] /home/kc/.gradle/caches/transforms-2/files-2.1/31acfad8dbfe3fdee9c0ba6477e471cf/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/a7772d14b9cc5096cb842332487ea3ca/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.JediBurrell:customFloatingActionButton:-SNAPSHOT] /home/kc/.gradle/caches/transforms-2/files-2.1/34bcbce7b03fbb49d84e9b51d79505d1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.material:material:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/81dad1d285fc71f45362904144922b8f/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta2] /home/kc/.gradle/caches/transforms-2/files-2.1/ee4f4d73c82b07bd1a2010237d24dad3/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/69ee02580ac22374a81567248cd91395/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cca0f11303ad9053add81f770d60c109/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/ac4ee55633aa4d570908fe63247ba139/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/f6f78b7b8236fbdfc1611689b7c541fb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cbb1a9830b6e6cc50ff57291b11783c3/AndroidManifest.xml:2:1-12:12
+MERGED from [com.android.volley:volley:1.1.0] /home/kc/.gradle/caches/transforms-2/files-2.1/4be3844a989b358e0a0c3162b8e5e290/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.media:media:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/0d4d515c1fbc9d37f7495f5987b26933/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/7aaff1350a628fb3100870a5f6e9a91b/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/a20fc53f09f1bf393af46825e98641ae/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/9b7ce6d9242e9386d4e66f304514b710/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cd40e9ba701c0860867f1b70328743bd/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cdd073a63402d6a5e3b8d02f6a700817/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/163cdd6c218b32332219d8814e0b58f3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/0ec3a6d03ce0c0d473bda500c674e706/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/aaf3240123033ae4a94f7e0bf582ef76/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/1f0ad6d6e131cead1f821d5fc90ac2ff/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/85caf4e9e06738d5e3fd532dea4540e5/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/54a5bd5a9fd160a1ddb57e4162e1e343/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/04fc28054a0541fe02ddab84eb84ca4e/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/ece226db937bd2a617d96b2f17475834/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/162a2412aba4fd04f9a9c2aa88acfeb9/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/aed18c8acb57adad271dcf9582ac1d24/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/8a111fcd61d343b2ae406cf85b342cf3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/734b91f3b74f81eaf835ebde510f067a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/ac8e99a4484f617021bfd1b36d88ca7c/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/e088851c785ff3b713e29f19e04ed29c/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/9f56beedebd5f8d94fd5464edae49aed/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/bd222cd1221f05c42cc02b2a08ad68a1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/8f15290177a2be69c14286dfc16dbaf5/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/5f76daff85d059a273c68e658d5e748f/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/6ce2ec5f086eaa885885aa6709e8986f/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/ea1440b3a53354452e653e9c3756908f/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/5980e791f2bfdcaa1b8293c9e2f84fe7/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/d987bef50ace3fdffa8b7deaac033ac0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/a18a7839f773da27c8e1844df5e23bdc/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/73066161355cdf889bb6751ed0069053/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+	package
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:3:5-34
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:1-39:12
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:6:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:7:22-77
+application
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:9:5-37:19
+MERGED from [com.google.android.material:material:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/81dad1d285fc71f45362904144922b8f/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/81dad1d285fc71f45362904144922b8f/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta2] /home/kc/.gradle/caches/transforms-2/files-2.1/ee4f4d73c82b07bd1a2010237d24dad3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta2] /home/kc/.gradle/caches/transforms-2/files-2.1/ee4f4d73c82b07bd1a2010237d24dad3/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cbb1a9830b6e6cc50ff57291b11783c3/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cbb1a9830b6e6cc50ff57291b11783c3/AndroidManifest.xml:10:5-20
+MERGED from [com.android.volley:volley:1.1.0] /home/kc/.gradle/caches/transforms-2/files-2.1/4be3844a989b358e0a0c3162b8e5e290/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.0] /home/kc/.gradle/caches/transforms-2/files-2.1/4be3844a989b358e0a0c3162b8e5e290/AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/aed18c8acb57adad271dcf9582ac1d24/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/aed18c8acb57adad271dcf9582ac1d24/AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/ac8e99a4484f617021bfd1b36d88ca7c/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/ac8e99a4484f617021bfd1b36d88ca7c/AndroidManifest.xml:9:5-20
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/5f76daff85d059a273c68e658d5e748f/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/5f76daff85d059a273c68e658d5e748f/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/aed18c8acb57adad271dcf9582ac1d24/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:14:9-35
+	android:label
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:12:9-41
+	android:roundIcon
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:13:9-54
+	android:icon
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:11:9-43
+	android:allowBackup
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:10:9-35
+	android:theme
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:16:9-52
+	android:usesCleartextTraffic
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:15:9-44
+uses-library#org.apache.http.legacy
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:17:9-87
+	android:required
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:17:61-85
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:17:23-60
+activity#di.uoa.gr.ecommerce.RegisterActivity
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:18:9-54
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:18:19-51
+activity#di.uoa.gr.ecommerce.HomeActivity
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:19:9-25:20
+	android:parentActivityName
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:21:13-47
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:20:13-41
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:22:13-24:40
+	android:value
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:24:17-38
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:23:17-63
+activity#di.uoa.gr.ecommerce.Menu
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:26:9-29:20
+	android:label
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:28:13-45
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:27:13-33
+activity#di.uoa.gr.ecommerce.MainActivity
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:30:9-36:20
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:30:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:31:13-35:29
+action#android.intent.action.MAIN
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:32:17-69
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:32:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:34:17-77
+	android:name
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml:34:27-74
+uses-sdk
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+MERGED from [andhradroid.dev:aFilechooser:1.0.1] /home/kc/.gradle/caches/transforms-2/files-2.1/31acfad8dbfe3fdee9c0ba6477e471cf/AndroidManifest.xml:22:5-24:41
+MERGED from [andhradroid.dev:aFilechooser:1.0.1] /home/kc/.gradle/caches/transforms-2/files-2.1/31acfad8dbfe3fdee9c0ba6477e471cf/AndroidManifest.xml:22:5-24:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/a7772d14b9cc5096cb842332487ea3ca/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/a7772d14b9cc5096cb842332487ea3ca/AndroidManifest.xml:20:5-44
+MERGED from [com.github.JediBurrell:customFloatingActionButton:-SNAPSHOT] /home/kc/.gradle/caches/transforms-2/files-2.1/34bcbce7b03fbb49d84e9b51d79505d1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.JediBurrell:customFloatingActionButton:-SNAPSHOT] /home/kc/.gradle/caches/transforms-2/files-2.1/34bcbce7b03fbb49d84e9b51d79505d1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.material:material:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/81dad1d285fc71f45362904144922b8f/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/81dad1d285fc71f45362904144922b8f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta2] /home/kc/.gradle/caches/transforms-2/files-2.1/ee4f4d73c82b07bd1a2010237d24dad3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta2] /home/kc/.gradle/caches/transforms-2/files-2.1/ee4f4d73c82b07bd1a2010237d24dad3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/69ee02580ac22374a81567248cd91395/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/69ee02580ac22374a81567248cd91395/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cca0f11303ad9053add81f770d60c109/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cca0f11303ad9053add81f770d60c109/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/ac4ee55633aa4d570908fe63247ba139/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/ac4ee55633aa4d570908fe63247ba139/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/f6f78b7b8236fbdfc1611689b7c541fb/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/f6f78b7b8236fbdfc1611689b7c541fb/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cbb1a9830b6e6cc50ff57291b11783c3/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cbb1a9830b6e6cc50ff57291b11783c3/AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.volley:volley:1.1.0] /home/kc/.gradle/caches/transforms-2/files-2.1/4be3844a989b358e0a0c3162b8e5e290/AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.0] /home/kc/.gradle/caches/transforms-2/files-2.1/4be3844a989b358e0a0c3162b8e5e290/AndroidManifest.xml:7:5-43
+MERGED from [androidx.media:media:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/0d4d515c1fbc9d37f7495f5987b26933/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/0d4d515c1fbc9d37f7495f5987b26933/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/7aaff1350a628fb3100870a5f6e9a91b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/7aaff1350a628fb3100870a5f6e9a91b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/a20fc53f09f1bf393af46825e98641ae/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/a20fc53f09f1bf393af46825e98641ae/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/9b7ce6d9242e9386d4e66f304514b710/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/9b7ce6d9242e9386d4e66f304514b710/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cd40e9ba701c0860867f1b70328743bd/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cd40e9ba701c0860867f1b70328743bd/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cdd073a63402d6a5e3b8d02f6a700817/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/cdd073a63402d6a5e3b8d02f6a700817/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/163cdd6c218b32332219d8814e0b58f3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/163cdd6c218b32332219d8814e0b58f3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/0ec3a6d03ce0c0d473bda500c674e706/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/0ec3a6d03ce0c0d473bda500c674e706/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/aaf3240123033ae4a94f7e0bf582ef76/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/aaf3240123033ae4a94f7e0bf582ef76/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/1f0ad6d6e131cead1f821d5fc90ac2ff/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/1f0ad6d6e131cead1f821d5fc90ac2ff/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/85caf4e9e06738d5e3fd532dea4540e5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/85caf4e9e06738d5e3fd532dea4540e5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/54a5bd5a9fd160a1ddb57e4162e1e343/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/54a5bd5a9fd160a1ddb57e4162e1e343/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/04fc28054a0541fe02ddab84eb84ca4e/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/04fc28054a0541fe02ddab84eb84ca4e/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/ece226db937bd2a617d96b2f17475834/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/ece226db937bd2a617d96b2f17475834/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/162a2412aba4fd04f9a9c2aa88acfeb9/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/162a2412aba4fd04f9a9c2aa88acfeb9/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/aed18c8acb57adad271dcf9582ac1d24/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/aed18c8acb57adad271dcf9582ac1d24/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/8a111fcd61d343b2ae406cf85b342cf3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/8a111fcd61d343b2ae406cf85b342cf3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/734b91f3b74f81eaf835ebde510f067a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/734b91f3b74f81eaf835ebde510f067a/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/ac8e99a4484f617021bfd1b36d88ca7c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /home/kc/.gradle/caches/transforms-2/files-2.1/ac8e99a4484f617021bfd1b36d88ca7c/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/e088851c785ff3b713e29f19e04ed29c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/e088851c785ff3b713e29f19e04ed29c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/9f56beedebd5f8d94fd5464edae49aed/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/9f56beedebd5f8d94fd5464edae49aed/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/bd222cd1221f05c42cc02b2a08ad68a1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/bd222cd1221f05c42cc02b2a08ad68a1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/8f15290177a2be69c14286dfc16dbaf5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/8f15290177a2be69c14286dfc16dbaf5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/5f76daff85d059a273c68e658d5e748f/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/5f76daff85d059a273c68e658d5e748f/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/6ce2ec5f086eaa885885aa6709e8986f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/6ce2ec5f086eaa885885aa6709e8986f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/ea1440b3a53354452e653e9c3756908f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/ea1440b3a53354452e653e9c3756908f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/5980e791f2bfdcaa1b8293c9e2f84fe7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0-rc01] /home/kc/.gradle/caches/transforms-2/files-2.1/5980e791f2bfdcaa1b8293c9e2f84fe7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/d987bef50ace3fdffa8b7deaac033ac0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/d987bef50ace3fdffa8b7deaac033ac0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/a18a7839f773da27c8e1844df5e23bdc/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/a18a7839f773da27c8e1844df5e23bdc/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/73066161355cdf889bb6751ed0069053/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/kc/.gradle/caches/transforms-2/files-2.1/73066161355cdf889bb6751ed0069053/AndroidManifest.xml:20:5-44
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+		ADDED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml
+		INJECTED from /home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/src/main/AndroidManifest.xml

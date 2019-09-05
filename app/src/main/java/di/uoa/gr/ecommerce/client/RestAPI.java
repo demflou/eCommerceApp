@@ -1,14 +1,20 @@
 package di.uoa.gr.ecommerce.client;
 
 
+import java.util.List;
+
 import di.uoa.gr.ecommerce.rest.Login;
+import di.uoa.gr.ecommerce.rest.Message;
 import di.uoa.gr.ecommerce.rest.User;
+import di.uoa.gr.ecommerce.rest.myCat;
 import di.uoa.gr.ecommerce.rest.myItem;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface RestAPI {
 
@@ -27,6 +33,25 @@ public interface RestAPI {
             @Part MultipartBody.Part file
     );
     */
+
+    @GET("category/ibc/{category}")
+    Call<List<myItem>> findByCat(@Path("category") String category);
+
+    @GET("category")
+    Call<List<myCat>> findAllCats();
+
+    @GET("item/byDesc/{words}")
+    Call<List<myItem>> searchDesc (@Path("words") String words);
+
+    @GET("messages/to/{id}")
+    Call<List<Message>> getMessagesIn (@Header("Authorization") String token, @Path("id") String id);
+
+    @GET("item/seller/{seller}")
+    Call<List<myItem>> getAuctionsbySeller (@Header("Authorization") String token, @Path("seller") String seller);
+
+    @GET("messages/from/{id}")
+    Call<List<Message>> getMessagesOut (@Header("Authorization") String token, @Path("id") String id);
+
     @POST("login/login")
     Call<String> login (@Body Login login);
 

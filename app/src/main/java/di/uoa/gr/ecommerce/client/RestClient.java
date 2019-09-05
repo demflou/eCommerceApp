@@ -25,7 +25,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RestClient {
 
-    public static final String BASE_URL = "https://192.168.0.6:8181/backEnd/webresources/";
+    public static final String BASE_URL = "https://192.168.1.16:8181/backEnd/webresources/";
     private static Retrofit retrofit = null;
     private static Retrofit stringRetrofit = null;
 

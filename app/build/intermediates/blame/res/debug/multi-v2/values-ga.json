@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/kc/AndroidStudioProjects/eComm/eCommerceApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ga/values-ga.xml",
+            "map": [
+                {
+                    "source": "/home/kc/.gradle/caches/transforms-2/files-2.1/31acfad8dbfe3fdee9c0ba6477e471cf/res/values-ga/values-ga.xml",
+                    "from": {
+                        "startLines": "4,5,6,7",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "187,244,307,398",
+                        "endColumns": "56,62,90,91",
+                        "endOffsets": "239,302,393,485"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,112,175,266",
+                        "endColumns": "56,62,90,91",
+                        "endOffsets": "107,170,261,353"
+                    }
+                }
+            ]
+        }
+    ]
+}
