@@ -156,6 +156,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public String jwt ;
 
     @Override
+    protected void onDestroy() {
+        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+        prefs.edit().clear().commit();
+        System.out.println("DESTROYED");
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_item);

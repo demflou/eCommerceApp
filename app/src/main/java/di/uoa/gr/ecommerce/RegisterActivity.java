@@ -1,5 +1,6 @@
 package di.uoa.gr.ecommerce;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,14 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText country;
     private EditText gloc;
     private Button Register;
+
+    @Override
+    protected void onDestroy() {
+        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+        prefs.edit().clear().commit();
+        System.out.println("DESTROYED");
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

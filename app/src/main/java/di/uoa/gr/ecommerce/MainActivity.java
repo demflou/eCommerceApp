@@ -1,6 +1,7 @@
 package di.uoa.gr.ecommerce;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
@@ -64,6 +65,14 @@ public class    MainActivity extends AppCompatActivity {
 
     public ArrayList<User> getUsers() {
         return users;
+    }
+
+    @Override
+    protected void onDestroy() {
+        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+        prefs.edit().clear().commit();
+        System.out.println("DESTROYED");
+        super.onDestroy();
     }
 
     @Override

@@ -45,6 +45,14 @@ public class Menu extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    @Override
+    protected void onDestroy() {
+        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+        prefs.edit().clear().commit();
+        System.out.println("DESTROYED");
+        super.onDestroy();
+    }
+
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         if(jwt==null) {
