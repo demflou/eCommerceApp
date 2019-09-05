@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         app:popupTheme="@style/MyMaterialTheme"
-        app:title="DiBay"/>
+        app:title="DiBay">
 
     <ImageButton
         android:id="@+id/DeleteAuction"
@@ -28,9 +28,12 @@
         android:layout_marginEnd="8dp"
         android:background="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/toolbarshow"
-        app:layout_constraintEnd_toEndOf="@+id/toolbarshow"
-        app:layout_constraintTop_toTopOf="@+id/toolbarshow"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@android:drawable/ic_delete"
+        android:padding="8dp"
+        android:layout_gravity="right" />
+        <!--app:layout_constraintEnd_toEndOf="@+id/toolbarshow"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/toolbarshow"-->
+        <!--/>-->
 
     <ImageButton
         android:id="@+id/startAuction"
@@ -39,17 +42,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="?attr/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarshow"
-        app:layout_constraintEnd_toStartOf="@+id/DeleteAuction"
-        app:layout_constraintTop_toTopOf="@+id/toolbarshow"
+        android:padding="8dp"
+        android:layout_gravity="right"
         app:srcCompat="@android:drawable/ic_media_play" />
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bids"
-        android:textSize="18sp"
+        android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarshow" />
@@ -62,12 +65,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"></ListView>
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attributes"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bidsList" />
+
     <ListView
         android:id="@+id/ItemAttrs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bidsList" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
