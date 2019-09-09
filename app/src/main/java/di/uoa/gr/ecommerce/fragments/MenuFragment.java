@@ -1,6 +1,7 @@
 package di.uoa.gr.ecommerce.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +20,15 @@ import di.uoa.gr.ecommerce.R;
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;
 import di.uoa.gr.ecommerce.rest.myItem;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Header;
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.Jwts;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class MenuFragment extends Fragment {
@@ -53,20 +60,20 @@ public class MenuFragment extends Fragment {
                 startActivity(reg);
             }
         });
-//        if(jwt==null) {
-//            SharedPreferences prefs = this.getActivity().getSharedPreferences("jwt", MODE_PRIVATE);
-//            String restoredText = prefs.getString("jwt", null);
-//            System.out.println("reti jwt on click = " + restoredText);
-//            jwt = restoredText;
-//            System.out.println("from auction page 2 jwt = " + jwt);
-//        }
-//        int i = jwt.lastIndexOf('.');
-//        String withoutSignature = jwt.substring(0, i+1);
-//        Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
-//        RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
-//        Call<List<myItem>> call = restAPI.getAuctionsbySeller(jwt,untrusted.getBody().getSubject());
+        if(jwt==null) {
+            SharedPreferences prefs = this.getActivity().getSharedPreferences("jwt", MODE_PRIVATE);
+            String restoredText = prefs.getString("jwt", null);
+            System.out.println("reti jwt on click = " + restoredText);
+            jwt = restoredText;
+            System.out.println("from auction page 2 jwt = " + jwt);
+        }
+        int i = jwt.lastIndexOf('.');
+        String withoutSignature = jwt.substring(0, i+1);
+        Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
         RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
-        Call<List<myItem>> call = restAPI.getAuctionsbySeller(jwt,"Kyriakos");
+        Call<List<myItem>> call = restAPI.getAuctionsbySeller(jwt,untrusted.getBody().getSubject());
+//        RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
+//        Call<List<myItem>> call = restAPI.getAuctionsbySeller(jwt,"Kyriakos");
         call.enqueue(new Callback<List<myItem>>() {
             @Override
             public void onResponse(Call<List<myItem>> call, Response<List<myItem>> response) {

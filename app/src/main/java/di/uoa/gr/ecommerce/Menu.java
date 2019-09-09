@@ -21,6 +21,10 @@ import di.uoa.gr.ecommerce.fragments.MenuFragment;
 import di.uoa.gr.ecommerce.fragments.MenuFragment2;
 import di.uoa.gr.ecommerce.fragments.MenuFragment3;
 import di.uoa.gr.ecommerce.fragments.MenuFragment4;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Header;
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.Jwts;
 
 public class Menu extends AppCompatActivity {
 
@@ -40,9 +44,20 @@ public class Menu extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        if(jwt==null){
+            tabLayout.setVisibility(ViewPager.GONE);
+            toolbar.setTitle(toolbar.getTitle()+"- Welcome Guest!");
+//            toolbar.setEnabled(false);
+        }
+        else{
+            int i = jwt.lastIndexOf('.');
+            String withoutSignature = jwt.substring(0, i+1);
+            Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
+            toolbar.setTitle(toolbar.getTitle()+"- Welcome "+untrusted.getBody().getSubject());
+        }
+
     }
 
     @Override

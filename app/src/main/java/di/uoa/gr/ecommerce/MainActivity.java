@@ -7,6 +7,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +17,13 @@ import java.util.ArrayList;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import di.uoa.gr.ecommerce.client.RestAPI;
+import di.uoa.gr.ecommerce.client.RestClient;
+import di.uoa.gr.ecommerce.rest.Login;
 import di.uoa.gr.ecommerce.rest.User;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 class AESCrypt
 {
@@ -91,13 +98,43 @@ public class    MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             try {
-                new LoginTask(MainActivity.this,getApplicationContext()).execute(username.getText().toString(), AESCrypt.encrypt(password.getText().toString()));
+                //new LoginTask(MainActivity.this,getApplicationContext()).execute(username.getText().toString(), AESCrypt.encrypt(password.getText().toString()));
+                RestAPI restAPI =
+                        RestClient.getStringClient().create(RestAPI.class);
+                Login login = new Login();
+                login.setUsername(username.getText().toString());
+                login.setPassword(AESCrypt.encrypt(password.getText().toString()).trim());
+                System.out.println(login.getPassword()+ "_"+login.getUsername());
+                restAPI.login(login).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        String retToken = response.body();
+                        if (retToken != null && !retToken.equals("not")) {
+                            System.out.println("tokkkkken "+retToken);
+                            SharedPreferences.Editor editor = getApplicationContext().getSharedPreferences("jwt", MODE_PRIVATE).edit();
+                            editor.putString("jwt",retToken);
+                            editor.apply();
+                            System.out.println(editor.commit()+" coomit true");
+                            Intent login2 = new Intent(getApplicationContext(), Menu.class);
+                            startActivity(login2);
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "Wrong Login details", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-//                SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-//                String restoredText = prefs.getString("jwt", null);
-//                System.out.println("main jwt on click = "+restoredText);
-//                Intent login = new Intent (getApplicationContext(), Menu.class);
-//                startActivity(login);
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+//                Call<String> call = restAPI.login(login);
+//                String res = call.execute().body();
+                SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+                String restoredText = prefs.getString("jwt", null);
+                System.out.println("main jwt on click = "+restoredText);
+//                Intent login2 = new Intent (getApplicationContext(), Menu.class);
+//                startActivity(login2);
             } catch (Exception e) {
 
                 e.printStackTrace();

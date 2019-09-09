@@ -216,11 +216,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                  startActivityForResult(galleryIntent,RESULT_LOAD_IMAGE);
                  break;
              case R.id.postItem:
-                 BitmapDrawable bitmapDrawable = ((BitmapDrawable) imageToUpload.getDrawable());
-                 Bitmap bitmap = bitmapDrawable .getBitmap();
-                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                 String imageInByte = Base64.encodeToString(stream.toByteArray(),Base64.DEFAULT);
                  myItem newItem = new myItem();
                  newItem.setCountry(iCountry.getText().toString());
                  newItem.setDescription(iDescr.getText().toString());
@@ -255,8 +250,20 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                  Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
                  tUser.setUsername(untrusted.getBody().getSubject());
                  newItem.setSellerID(tUser);
+                 BitmapDrawable bitmapDrawable = ((BitmapDrawable) imageToUpload.getDrawable());
+                 Bitmap bitmap;
+                 if(bitmapDrawable!=null) {
+                     bitmap = bitmapDrawable.getBitmap();
+                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                     String imageInByte = Base64.encodeToString(stream.toByteArray(), Base64.DEFAULT);
+                     new RegisterTaskItem2(newItem,imageInByte).execute();
+                 }
+                 else
+                     new RegisterTaskItem2(newItem,null).execute();
+
 //                 EditText iCategories;
-                 new RegisterTaskItem2(newItem,imageInByte).execute();
+
 //                 new RegisterTaskItem(imageInByte,3,4).execute();
                  break;
          }
@@ -304,6 +311,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            Intent login2 = new Intent(getApplicationContext(), Menu.class);
+            startActivity(login2);
             super.onPostExecute(aVoid);
 //            Toast.makeText(getApplicationContext(),"Image Uploaded",Toast.LENGTH_SHORT).show();
         }
@@ -328,7 +337,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 public void onResponse(Call<Integer> call, Response<Integer> response) {
                     if(response.isSuccessful()){
                         Toast.makeText(getApplicationContext(),"Auction Created",Toast.LENGTH_SHORT).show();
-                        new RegisterTaskItem(image,response.body()).execute();
+                        if(image!=null)
+                            new RegisterTaskItem(image,response.body()).execute();
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"Auction not created due to client error",Toast.LENGTH_SHORT).show();
@@ -346,6 +356,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            if(image==null) {
+                Intent login2 = new Intent(getApplicationContext(), Menu.class);
+                startActivity(login2);
+            }
             super.onPostExecute(aVoid);
 //            Toast.makeText(getApplicationContext(),"Image Uploaded",Toast.LENGTH_SHORT).show();
         }
