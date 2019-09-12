@@ -1,9 +1,7 @@
 package di.uoa.gr.ecommerce.rest;
 
-import java.io.ByteArrayInputStream;
-
 public class myImage {
-    public myImage(Integer id, ByteArrayInputStream[] image, Integer itemID) {
+    public myImage(Integer id, String image, Integer itemID) {
         this.id = id;
         this.image = image;
         this.itemID = itemID;
@@ -17,11 +15,11 @@ public class myImage {
         this.id = id;
     }
 
-    public ByteArrayInputStream[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(ByteArrayInputStream[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -34,6 +32,6 @@ public class myImage {
     }
 
     private Integer id;
-    private ByteArrayInputStream[] image;
+    private String image;
     private Integer itemID;
 }

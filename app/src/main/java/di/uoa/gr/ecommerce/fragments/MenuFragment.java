@@ -1,21 +1,24 @@
 package di.uoa.gr.ecommerce.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import di.uoa.gr.ecommerce.HomeActivity;
+import di.uoa.gr.ecommerce.ItemAdapter;
 import di.uoa.gr.ecommerce.R;
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;
@@ -50,9 +53,20 @@ public class MenuFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_menu, container, false);
     }
 
+    @SuppressLint("WrongConstant")
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         AppCompatImageButton newAuction = (AppCompatImageButton) view.findViewById(R.id.fab2);
+        final RecyclerView listView = (RecyclerView) getView().findViewById(R.id.myAuctionsList);
+        final List<myItem> list = null;
+        ItemAdapter adapter = new ItemAdapter(requireContext(),list);
+        LinearLayoutManager llm=new LinearLayoutManager(requireContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        listView.setLayoutManager(llm);
+        listView.setAdapter(adapter);
+        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(requireContext(),
+                DividerItemDecoration.VERTICAL);
+        listView.addItemDecoration(mDividerItemDecoration);
         newAuction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,11 +86,10 @@ public class MenuFragment extends Fragment {
         Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
         RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
         Call<List<myItem>> call = restAPI.getAuctionsbySeller(jwt,untrusted.getBody().getSubject());
-//        RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
-//        Call<List<myItem>> call = restAPI.getAuctionsbySeller(jwt,"Kyriakos");
         call.enqueue(new Callback<List<myItem>>() {
+            @SuppressLint("WrongConstant")
             @Override
-            public void onResponse(Call<List<myItem>> call, Response<List<myItem>> response) {
+            public void onResponse(Call<List<myItem>> call, final Response<List<myItem>> response) {
                 System.out.println("SUCCESESEWSE");
                 String[] mobileArray;
                 if (!response.isSuccessful()) {
@@ -88,6 +101,7 @@ public class MenuFragment extends Fragment {
                         mobileArray = new String[listMessages.size()];
 //                                             mobileArray = listMessages.toArray(new String[0]);
                         for (int i=0;i< listMessages.size();i++) {
+//                            list.add(listMessages.get(i));
                             mobileArray[i]=listMessages.get(i).getName();
                         }
                     } catch (Exception e) {
@@ -99,11 +113,26 @@ public class MenuFragment extends Fragment {
                 for (String c : mobileArray){
                     System.out.println(c);
                 }
-                ArrayAdapter adapter = new ArrayAdapter<String>(requireContext(),
-                        R.layout.test_list_item, mobileArray);
+//                ArrayAdapter adapter = new ArrayAdapter<String>(requireContext(),
+//                        R.layout.test_list_item, mobileArray);
+//
+//                ListView listView = (ListView) getView().findViewById(R.id.myAuctionsList);
+                ItemAdapter adapter = (ItemAdapter) listView.getAdapter();
+                adapter.insert(response.body());
+                System.out.println(adapter.getItemCount()+ " is size");
+                adapter.setOnItemClickListener(new ItemAdapter.ClickListener() {
+                    @Override
+                    public void onItemClick(int position, View v) {
+                        if(response.body()!=null)
+                            System.out.println("onItemClick position: " + response.body().get(position).getId());
+                    }
 
-                ListView listView = (ListView) getView().findViewById(R.id.myAuctionsList);
-                listView.setAdapter(adapter);
+//                    @Override
+//                    public void onItemLongClick(int position, View v) {
+//                        Log.d(TAG, "onItemLongClick pos = " + position);
+//                    }
+                });
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -115,10 +144,8 @@ public class MenuFragment extends Fragment {
                 for (String c : mobileArray){
                     System.out.println(c);
                 }
-                ArrayAdapter adapter = new ArrayAdapter<String>(requireContext(),
-                        R.layout.test_list_item, mobileArray);
-                ListView listView = (ListView) getView().findViewById(R.id.myAuctionsList);
-                listView.setAdapter(adapter);
+                ItemAdapter adapter = (ItemAdapter) listView.getAdapter();
+                adapter.insert(null);
             }
         });
     }

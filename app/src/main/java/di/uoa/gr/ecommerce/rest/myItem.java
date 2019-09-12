@@ -1,5 +1,7 @@
 package di.uoa.gr.ecommerce.rest;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -84,6 +86,7 @@ public class myItem {
         this.country = country;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     public Date getStartDate() {
         return startDate;
     }
@@ -92,6 +95,7 @@ public class myItem {
         this.startDate = startDate;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     public Date getEndDate() {
         return endDate;
     }

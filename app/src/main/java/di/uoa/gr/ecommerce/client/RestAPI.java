@@ -37,6 +37,9 @@ public interface RestAPI {
     @GET("category/ibc/{category}")
     Call<List<myItem>> findByCat(@Path("category") String category);
 
+    @GET("item/images/{id}")
+    Call<String> getImage(@Path("id") Integer id);
+
     @GET("category")
     Call<List<myCat>> findAllCats();
 

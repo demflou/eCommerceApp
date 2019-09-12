@@ -1,5 +1,6 @@
 package di.uoa.gr.ecommerce.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,16 +8,19 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import di.uoa.gr.ecommerce.ItemAdapter;
 import di.uoa.gr.ecommerce.R;
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;
@@ -30,9 +34,9 @@ import retrofit2.Response;
 public class MenuFragment2 extends Fragment {
 
     SearchView searchView;
-    ListView listView;
-    ArrayList<String> list;
-    ArrayAdapter<String > adapter;
+    RecyclerView listView;
+    List<myItem> list;
+    ItemAdapter adapter;
     Spinner spinner;
     Button resetBtn;
 
@@ -52,11 +56,20 @@ public class MenuFragment2 extends Fragment {
         return inflater.inflate(R.layout.fragment_menu2, container, false);
     }
 
+    @SuppressLint("WrongConstant")
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        listView = (RecyclerView) view.findViewById(R.id.SearchResults);
+        adapter = new ItemAdapter(requireContext(),list);
+        final LinearLayoutManager llm=new LinearLayoutManager(requireContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        listView.setLayoutManager(llm);
+        listView.setAdapter(adapter);
+        final DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(requireContext(),
+                DividerItemDecoration.VERTICAL);
+        listView.addItemDecoration(mDividerItemDecoration);
         spinner=(Spinner)view.findViewById(R.id.spinner1);
         searchView = (SearchView) view.findViewById(R.id.searchView);
-        listView = (ListView) view.findViewById(R.id.SearchResults);
         resetBtn = (Button) view.findViewById(R.id.resetSearch);
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +77,11 @@ public class MenuFragment2 extends Fragment {
                 spinner.setSelection(0);
                 searchView.setQuery("",false);
                 searchView.clearFocus();
-                adapter = new ArrayAdapter<String>(requireContext(), R.layout.test_list_item, list);
                 list.clear();
+                adapter = new ItemAdapter(requireContext(), list);
+                listView.setLayoutManager(llm);
                 listView.setAdapter(adapter);
+                listView.addItemDecoration(mDividerItemDecoration);
                 adapter.notifyDataSetChanged();
             }
         });
@@ -97,8 +112,10 @@ public class MenuFragment2 extends Fragment {
             @Override
             public boolean onQueryTextSubmit(final String query) {
                 list.clear();
-                adapter = new ArrayAdapter<String>(requireContext(), R.layout.test_list_item, list);
+                adapter = new ItemAdapter(requireContext(), list);
+                listView.setLayoutManager(llm);
                 listView.setAdapter(adapter);
+                listView.addItemDecoration(mDividerItemDecoration);
                 adapter.notifyDataSetChanged();
                 if(!(spinner.getSelectedItem().toString().equals("None"))){
                     System.out.println("Category selected");
@@ -106,27 +123,18 @@ public class MenuFragment2 extends Fragment {
                     call.enqueue(new Callback<List<myItem>>() {
                         @Override
                         public void onResponse(Call<List<myItem>> call, Response<List<myItem>> response) {
-                            for(myItem i : response.body()){
-                                System.out.println(i.getId());
-//                                list.clear();
-                                list.add(i.getName());
-                            }
+//                            for(myItem i : response.body()){
+//                                System.out.println(i.getId());
+////                                list.clear();
+//                                list.add(i.getName());
+//                            }
+                            list=response.body();
 //                            listView.setAdapter(adapter);
-                            if(list.contains(query)) {
-                                System.out.println("query words are " + query);
-                                adapter = new ArrayAdapter<String>(requireContext(), R.layout.test_list_item, list);
-                                listView.setAdapter(adapter);
-                                adapter.getFilter().filter(query);
-                                adapter.notifyDataSetChanged();
-                            }
-                            else {
-                                list.clear();
-                                list.add("No Match Found 2");
-//                                listView.setAdapter(adapter);
-                                adapter = new ArrayAdapter<String>(requireContext(), R.layout.test_list_item, list);
-                                listView.setAdapter(adapter);
-                                adapter.notifyDataSetChanged();
-                            }
+                            adapter = new ItemAdapter(requireContext(), list);
+                            listView.setLayoutManager(llm);
+                            listView.addItemDecoration(mDividerItemDecoration);
+                            adapter.getFilter().filter(query);
+                            listView.setAdapter(adapter);
                         }
 
                         @Override
@@ -136,25 +144,41 @@ public class MenuFragment2 extends Fragment {
                     });
                     return false;
                 }
-                adapter = new ArrayAdapter<String>(requireContext(), R.layout.test_list_item, list);
+                adapter = new ItemAdapter(requireContext(), list);
                 Call<List<myItem>> call = restAPI.searchDesc(query);
                 call.enqueue(new Callback<List<myItem>>() {
                     @Override
                     public void onResponse(Call<List<myItem>> call, Response<List<myItem>> response) {
-                        if(response.body() == null)
-                            list.add("No Match found 3");
+                        if(response.body() == null) {
+//                            list.add("No Match found 3");
+                        }
                         else{
                             for (myItem m:response.body()){
-                                list.add(m.getName());
+                                list.add(m);
                             }
                         }
+                        adapter.insert(list);
+                        listView.setLayoutManager(llm);
                         listView.setAdapter(adapter);
+                        listView.addItemDecoration(mDividerItemDecoration);
+                        adapter.setOnItemClickListener(new ItemAdapter.ClickListener() {
+                            @Override
+                            public void onItemClick(int position, View v) {
+                                if(list!=null)
+                                    System.out.println("onItemClick position: " + list.get(position).getId());
+                            }
+
+//                    @Override
+//                    public void onItemLongClick(int position, View v) {
+//                        Log.d(TAG, "onItemLongClick pos = " + position);
+//                    }
+                        });
                         adapter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void onFailure(Call<List<myItem>> call, Throwable t) {
-                        list.add("Failure");
+//                        list.add("Failure");
                     }
                 });
 //                adapter = new ArrayAdapter<String>(requireContext(), R.layout.test_list_item, list);
@@ -181,10 +205,12 @@ public class MenuFragment2 extends Fragment {
         });
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, final long l) {
-                adapter = new ArrayAdapter<String>(requireContext(), R.layout.test_list_item, list);
+            public void onItemSelected(final AdapterView<?> adapterView, View view, int i, final long l) {
                 list.clear();
+                adapter = new ItemAdapter(requireContext(), list);
+                listView.setLayoutManager(llm);
                 listView.setAdapter(adapter);
+                listView.addItemDecoration(mDividerItemDecoration);
                 adapter.notifyDataSetChanged();
                 if(!searchView.getQuery().toString().equals("")|| adapterView.getItemAtPosition(i).toString().equals("None"))
                     return;
@@ -193,9 +219,24 @@ public class MenuFragment2 extends Fragment {
                     @Override
                     public void onResponse(Call<List<myItem>> call, Response<List<myItem>> response) {
                         for(myItem m:response.body())
-                            list.add(m.getName());
-                        adapter = new ArrayAdapter<String>(requireContext(), R.layout.test_list_item, list);
+                            list.add(m);
+//                        adapter = new ItemAdapter(requireContext() ,list);
+                        adapter.insert(list);
+                        listView.setLayoutManager(llm);
                         listView.setAdapter(adapter);
+                        listView.addItemDecoration(mDividerItemDecoration);
+                        adapter.setOnItemClickListener(new ItemAdapter.ClickListener() {
+                            @Override
+                            public void onItemClick(int position, View v) {
+                                if(list!=null)
+                                    System.out.println("onItemClick position: " + list.get(position).getId());
+                            }
+
+//                    @Override
+//                    public void onItemLongClick(int position, View v) {
+//                        Log.d(TAG, "onItemLongClick pos = " + position);
+//                    }
+                        });
                         adapter.notifyDataSetChanged();
                     }
 
