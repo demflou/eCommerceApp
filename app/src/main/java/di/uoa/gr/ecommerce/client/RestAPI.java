@@ -40,6 +40,9 @@ public interface RestAPI {
     @GET("item/images/{id}")
     Call<String> getImage(@Path("id") Integer id);
 
+    @GET("messages/count/{to}")
+    Call<Long> countMsgs(@Header("Authorization") String token,@Path("to") String to);
+
     @GET("category")
     Call<List<myCat>> findAllCats();
 

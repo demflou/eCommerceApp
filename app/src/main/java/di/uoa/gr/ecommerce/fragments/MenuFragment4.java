@@ -1,10 +1,14 @@
 package di.uoa.gr.ecommerce.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -60,10 +64,11 @@ public class MenuFragment4 extends Fragment {
         String withoutSignature = jwt.substring(0, i+1);
         Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
         RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
+        final ListView listView = (ListView) getView().findViewById(R.id.OutboxList);
         Call<List<Message>> call = restAPI.getMessagesOut(jwt,untrusted.getBody().getSubject());
         call.enqueue(new Callback<List<Message>>() {
             @Override
-            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
+            public void onResponse(Call<List<Message>> call, final Response<List<Message>> response) {
                 System.out.println("SUCCESESEWSE");
                 String[] mobileArray;
                 if (!response.isSuccessful()) {
@@ -77,6 +82,55 @@ public class MenuFragment4 extends Fragment {
                         for (int i=0;i< listMessages.size();i++) {
                             mobileArray[i]="ΤΟ: "+listMessages.get(i).getToUserID().getUsername()+"\n Message: "+listMessages.get(i).getMessage();
                         }
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                final Message o = response.body().get(position);
+                                /*DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        switch (which){
+                                            case DialogInterface.BUTTON_POSITIVE:
+                                                System.out.println("Yes button clicked");
+                                                break;
+
+                                            case DialogInterface.BUTTON_NEGATIVE:
+                                                System.out.println("No button clicked");
+                                                break;
+                                        }
+                                    }
+                                };
+                                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                                AlertDialog dialog = builder.setTitle("Delete Message").setMessage("Are you sure?").setPositiveButton("Delete", dialogClickListener)
+                                        .setNegativeButton("Cancel", dialogClickListener).create();
+//                                dialog.getButton(0).setBackgroundColor(Color.RED);
+//                                dialog.getButton(1).setBackgroundColor(Color.GREEN);*/
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext()).setTitle("Delete Message");
+                                final AlertDialog dialog = builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        System.out.println("Delete button clicked"+o.getId());
+                                    }
+
+                                }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        System.out.println("Cancel button clicked"+o.getId());
+                                    }
+                                }).create();
+//2. now setup to change color of the button
+                                dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+                                    @Override
+                                    public void onShow(DialogInterface arg0) {
+                                        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.RED);
+//                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.GREEN);
+                                    }
+                                });
+
+                                dialog.show();
+                                System.out.println(o.getMessage());
+                            }
+                        });
                     } catch (Exception e) {
                         e.printStackTrace();
                         mobileArray = new String[1];
@@ -89,7 +143,6 @@ public class MenuFragment4 extends Fragment {
                 ArrayAdapter adapter = new ArrayAdapter<String>(requireContext(),
                         R.layout.test_list_item, mobileArray);
 
-                ListView listView = (ListView) getView().findViewById(R.id.OutboxList);
                 listView.setAdapter(adapter);
             }
 

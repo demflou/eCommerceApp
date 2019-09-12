@@ -1,18 +1,25 @@
 package di.uoa.gr.ecommerce.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import di.uoa.gr.ecommerce.MessageAdapter;
 import di.uoa.gr.ecommerce.R;
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;
@@ -32,6 +39,15 @@ public class MenuFragment3 extends Fragment {
 //    String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
 //            "WebOS","Ubuntu","Windows7","Max OS X"};
     public String jwt ;
+
+    public void showMenu(View v)
+    {
+        PopupMenu popup = new PopupMenu(requireContext(),v);
+        popup.setOnMenuItemClickListener(null);// to implement on click event on items of menu
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.msg_menu, popup.getMenu());
+        popup.show();
+    }
 
     public MenuFragment3() {
         // Required empty public constructor
@@ -65,8 +81,9 @@ public class MenuFragment3 extends Fragment {
         RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
         Call<List<Message>> call = restAPI.getMessagesIn(jwt,untrusted.getBody().getSubject());
         call.enqueue(new Callback<List<Message>>() {
+                                 @SuppressLint("WrongConstant")
                                  @Override
-                                 public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
+                                 public void onResponse(Call<List<Message>> call, final Response<List<Message>> response) {
                                      System.out.println("SUCCESESEWSE");
                                      String[] mobileArray;
                                      if (!response.isSuccessful()) {
@@ -89,11 +106,30 @@ public class MenuFragment3 extends Fragment {
                                      for (String c : mobileArray){
                                          System.out.println(c);
                                      }
-                                     ArrayAdapter adapter = new ArrayAdapter<String>(requireContext(),
-                                             R.layout.test_list_item, mobileArray);
-
-                                     ListView listView = (ListView) getView().findViewById(R.id.InboxList);
+                                     RecyclerView listView = getView().findViewById(R.id.InboxList);
+                                     MessageAdapter adapter = new MessageAdapter(requireContext(), response.body());
+                                     LinearLayoutManager llm=new LinearLayoutManager(requireContext());
+                                     llm.setOrientation(LinearLayoutManager.VERTICAL);
+                                     listView.setLayoutManager(llm);
                                      listView.setAdapter(adapter);
+                                     DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(requireContext(),
+                                             DividerItemDecoration.VERTICAL);
+                                     listView.addItemDecoration(mDividerItemDecoration);
+                                     adapter.setOnItemClickListener(new MessageAdapter.ClickListener() {
+                                            @Override
+                                            public void onItemClick(int position, View v) {
+                                                if(response.body()!=null)
+                                                    showMenu(v);
+//                                                    System.out.println("onItemClick position: " + response.body().get(position).getId());
+                                            }
+
+                                            @Override
+                                            public void onItemLongClick(int position, View v) {
+                                                if(response.body()!=null)
+                                                    System.out.println("onItemLongClick position: " + response.body().get(position).getId());
+                                            }
+                                        });
+                                     listView.setAdapter( adapter);
                                  }
 
                                  @Override

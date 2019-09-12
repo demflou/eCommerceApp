@@ -1,5 +1,6 @@
 package di.uoa.gr.ecommerce;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import di.uoa.gr.ecommerce.client.RestAPI;
+import di.uoa.gr.ecommerce.client.RestClient;
 import di.uoa.gr.ecommerce.fragments.MenuFragment;
 import di.uoa.gr.ecommerce.fragments.MenuFragment2;
 import di.uoa.gr.ecommerce.fragments.MenuFragment3;
@@ -25,6 +28,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Menu extends AppCompatActivity {
 
@@ -46,6 +52,7 @@ public class Menu extends AppCompatActivity {
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
         if(jwt==null){
             tabLayout.setVisibility(ViewPager.GONE);
             toolbar.setTitle(toolbar.getTitle()+"- Welcome Guest!");
@@ -56,6 +63,25 @@ public class Menu extends AppCompatActivity {
             String withoutSignature = jwt.substring(0, i+1);
             Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
             toolbar.setTitle(toolbar.getTitle()+"- Welcome "+untrusted.getBody().getSubject());
+            RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
+            Call<Long> call = restAPI.countMsgs(jwt,untrusted.getBody().getSubject());
+            call.enqueue(new Callback<Long>() {
+                             @SuppressLint("ResourceAsColor")
+                             @RequiresApi(api = Build.VERSION_CODES.N)
+                             @Override
+                             public void onResponse(Call<Long> call, Response<Long> response) {
+                                 System.out.println("MESSAGES !!!!!!!!!!!!!!!!"+response.body());
+                                 if(response.body()!=0) {
+                                     tabLayout.getTabAt(2).showBadge().setBackgroundColor(R.color.colorPrimary);
+                                     tabLayout.getTabAt(2).showBadge().setNumber(response.body().intValue());
+                                 }
+                             }
+
+                             @Override
+                             public void onFailure(Call<Long> call, Throwable t) {
+
+                             }
+                         });
         }
 
     }

@@ -153,8 +153,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> im
             }
             else{
                 String filterPattern = charSequence.toString();
+                System.out.println(filterPattern +" is fp");
                 for(myItem item:mDatasetFull)
-                    if(item.getName().toLowerCase().contains(filterPattern)||item.getDescription().toLowerCase().contains(filterPattern))
+                    if((item.getName()!=null&&item.getName().toLowerCase().contains(filterPattern))||(item.getDescription()!=null&&item.getDescription().toLowerCase().contains(filterPattern)))
                         filteredList.add(item);
             }
             FilterResults results = new FilterResults();
@@ -165,7 +166,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> im
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             mDataset.clear();
-            mDataset.addAll((List)filterResults.values);
+            List<myItem> list = (List<myItem>) filterResults.values;
+            System.out.println(list.size());
+            if(list.size()>0)
+                mDataset.addAll((List)filterResults.values);
             notifyDataSetChanged();
         }
     };
