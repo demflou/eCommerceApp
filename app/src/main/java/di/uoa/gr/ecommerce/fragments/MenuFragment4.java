@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
 import java.util.List;
@@ -62,6 +63,13 @@ public class MenuFragment4 extends Fragment {
             jwt = restoredText;
             System.out.println("from auction page 2 jwt = " + jwt);
         }
+        AppCompatImageButton Compose = getView().findViewById(R.id.newmsg);
+        Compose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent msg = new Intent(requireContext(), NewMsg.class);
+                startActivity(msg);}});
+
         int i = jwt.lastIndexOf('.');
         String withoutSignature = jwt.substring(0, i+1);
         Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);

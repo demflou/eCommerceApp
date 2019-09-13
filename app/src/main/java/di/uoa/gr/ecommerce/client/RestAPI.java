@@ -79,4 +79,8 @@ public interface RestAPI {
 
     @POST("images")
     Call<Void> postImage(@Header("Authorization") String token, @Body RequestBody body);
+
+    @POST("messages")
+    Call<Void> createMessage(@Body Message msg, @Header("Authorization") String token);
+
 }
