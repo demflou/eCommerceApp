@@ -17,17 +17,18 @@
         android:layout_height="wrap_content">
 
     </ListView>
+
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/fab1"
+        android:id="@+id/newmsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:layout_marginRight="16dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:clickable="true"
-        android:theme="@style/MyMaterialTheme.Base"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="52dp"
         android:background="@color/colorPrimary"
+        android:clickable="true"
         android:src="@android:drawable/ic_menu_add"
+        android:theme="@style/MyMaterialTheme.Base"
         app:elevation="4dp" />
 </RelativeLayout>
