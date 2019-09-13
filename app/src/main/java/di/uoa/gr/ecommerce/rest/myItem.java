@@ -18,6 +18,15 @@ public class myItem {
     private Date startDate;
     private Date endDate;
     private String description;
+    private Collection<myBid> bidsCollection;
+
+    public Collection<myBid> getBidsCollection() {
+        return bidsCollection;
+    }
+
+    public void setBidsCollection(Collection<myBid> bidsCollection) {
+        this.bidsCollection = bidsCollection;
+    }
 
     public Set<myCat> getCategoryCollection() {
         return categoryCollection;
@@ -129,5 +138,4 @@ public class myItem {
     }
 
     private Collection<myImage> imagesCollection;
-//    private Collection<Bids> bidsCollection;
 }

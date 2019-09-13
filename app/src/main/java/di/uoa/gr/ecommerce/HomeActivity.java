@@ -155,13 +155,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private static final int RESULT_LOAD_IMAGE = 1;
     public String jwt ;
 
-    @Override
-    protected void onDestroy() {
-        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-        prefs.edit().clear().commit();
-        System.out.println("DESTROYED");
-        super.onDestroy();
-    }
+//    @Override
+//    protected void onDestroy() {
+//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+//        prefs.edit().clear().commit();
+//        System.out.println("DESTROYED");
+//        super.onDestroy();
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -206,6 +206,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             Uri selectedImage = data.getData();
             imageToUpload.setImageURI(selectedImage);
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        System.out.println("BACKK");
+        finish();
     }
 
     @Override
@@ -359,6 +365,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             if(image==null) {
                 Intent login2 = new Intent(getApplicationContext(), Menu.class);
                 startActivity(login2);
+                finish();
             }
             super.onPostExecute(aVoid);
 //            Toast.makeText(getApplicationContext(),"Image Uploaded",Toast.LENGTH_SHORT).show();

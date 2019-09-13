@@ -2,6 +2,7 @@ package di.uoa.gr.ecommerce.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
+import di.uoa.gr.ecommerce.Menu;
 import di.uoa.gr.ecommerce.R;
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;
@@ -63,7 +65,7 @@ public class MenuFragment4 extends Fragment {
         int i = jwt.lastIndexOf('.');
         String withoutSignature = jwt.substring(0, i+1);
         Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
-        RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
+        final RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
         final ListView listView = (ListView) getView().findViewById(R.id.OutboxList);
         Call<List<Message>> call = restAPI.getMessagesOut(jwt,untrusted.getBody().getSubject());
         call.enqueue(new Callback<List<Message>>() {
@@ -84,7 +86,7 @@ public class MenuFragment4 extends Fragment {
                         }
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
                                 final Message o = response.body().get(position);
                                 /*DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                                     @Override
@@ -105,11 +107,43 @@ public class MenuFragment4 extends Fragment {
                                         .setNegativeButton("Cancel", dialogClickListener).create();
 //                                dialog.getButton(0).setBackgroundColor(Color.RED);
 //                                dialog.getButton(1).setBackgroundColor(Color.GREEN);*/
-                                final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext()).setTitle("Delete Message");
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext()).setTitle("Delete Message")
+                                        .setMessage("Are you sure you want to delete this message?");
                                 final AlertDialog dialog = builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         System.out.println("Delete button clicked"+o.getId());
+                                        Call<Void> calldel=restAPI.deleteMsg(jwt,o.getId());
+                                        calldel.enqueue(new Callback<Void>() {
+                                            @Override
+                                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                                final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext()).setTitle("Message Deleted");
+                                                final AlertDialog dialog = builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        System.out.println("OK");
+                                                        Intent intent = new Intent(requireContext(), Menu.class);
+                                                        startActivity(intent);
+                                                    }
+
+                                                }).create();
+//2. now setup to change color of the button
+                                                dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+                                                    @Override
+                                                    public void onShow(DialogInterface arg0) {
+//                                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.RED);
+//                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.GREEN);
+                                                    }
+                                                });
+
+                                                dialog.show();
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<Void> call, Throwable t) {
+
+                                            }
+                                        });
                                     }
 
                                 }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

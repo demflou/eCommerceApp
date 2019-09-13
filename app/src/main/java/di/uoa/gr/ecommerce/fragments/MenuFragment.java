@@ -20,6 +20,7 @@ import java.util.List;
 import di.uoa.gr.ecommerce.HomeActivity;
 import di.uoa.gr.ecommerce.ItemAdapter;
 import di.uoa.gr.ecommerce.R;
+import di.uoa.gr.ecommerce.ViewAuction;
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;
 import di.uoa.gr.ecommerce.rest.myItem;
@@ -71,6 +72,7 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent reg = new Intent(requireContext(), HomeActivity.class);
+                reg.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(reg);
             }
         });
@@ -123,8 +125,13 @@ public class MenuFragment extends Fragment {
                 adapter.setOnItemClickListener(new ItemAdapter.ClickListener() {
                     @Override
                     public void onItemClick(int position, View v) {
-                        if(response.body()!=null)
+                        if(response.body()!=null) {
                             System.out.println("onItemClick position: " + response.body().get(position).getId());
+                            Intent intent = new Intent(requireContext(), ViewAuction.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            intent.putExtra("ItemID", response.body().get(position).getId());
+                            startActivity(intent);
+                        }
                     }
 
 //                    @Override

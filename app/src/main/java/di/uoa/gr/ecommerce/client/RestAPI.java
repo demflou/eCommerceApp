@@ -11,6 +11,7 @@ import di.uoa.gr.ecommerce.rest.myItem;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -33,6 +34,15 @@ public interface RestAPI {
             @Part MultipartBody.Part file
     );
     */
+
+    @DELETE("item/{id}")
+    Call<Void> deleteItem (@Header("Authorization") String token,@Path("id") Integer id);
+
+    @DELETE("messages/{id}")
+    Call<Void> deleteMsg (@Header("Authorization") String token,@Path("id") Integer id);
+
+    @GET("item/{id}")
+    Call<myItem> getItem(@Path("id") Integer id);
 
     @GET("category/ibc/{category}")
     Call<List<myItem>> findByCat(@Path("category") String category);
