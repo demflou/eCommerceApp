@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import java.util.List;
 
 import di.uoa.gr.ecommerce.Menu;
+import di.uoa.gr.ecommerce.NewMsg;
 import di.uoa.gr.ecommerce.R;
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;

@@ -88,9 +88,9 @@ public class Menu extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-        prefs.edit().clear().commit();
-        System.out.println("DESTROYED");
+//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+//        prefs.edit().clear().commit();
+//        System.out.println("DESTROYED");
         super.onDestroy();
     }
 

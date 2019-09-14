@@ -32,13 +32,18 @@ public class NewMsg extends AppCompatActivity {
     private Toolbar toolbar;
 
     @Override
+    protected void onDestroy(){
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_msgs);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         usrto = (EditText) findViewById(R.id.receiver);
         content = (EditText) findViewById(R.id.txtmsg);

@@ -155,13 +155,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private static final int RESULT_LOAD_IMAGE = 1;
     public String jwt ;
 
-//    @Override
-//    protected void onDestroy() {
+    @Override
+    protected void onDestroy() {
 //        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
 //        prefs.edit().clear().commit();
 //        System.out.println("DESTROYED");
-//        super.onDestroy();
-//    }
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -169,6 +169,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.create_item);
         toolbar = (Toolbar) findViewById(R.id.toolbarshow);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Create Auction");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(jwt==null) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

@@ -14,6 +14,8 @@ import android.text.Html;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import di.uoa.gr.ecommerce.client.RestAPI;
 import di.uoa.gr.ecommerce.client.RestClient;
@@ -86,6 +89,7 @@ public class ViewAuction  extends AppCompatActivity {
         final Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
         final Integer id =getIntent().getIntExtra("ItemID",-1);
         System.out.println(id+" is id");
+        final myItem[] item = new myItem[1];
         final RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
         final Call<myItem> call = restAPI.getItem(id);
         call.enqueue(new Callback<myItem>() {
@@ -93,6 +97,7 @@ public class ViewAuction  extends AppCompatActivity {
             @Override
             public void onResponse(Call<myItem> call, Response<myItem> response) {
                 System.out.println("RESPONSE");
+                item[0] =response.body();
                 toolbar.setTitle(response.body().getName());
                 if(response.body().getStartDate()!=null||(response.body().getNumofbids()!=null&&response.body().getNumofbids()>0))
                     delete.setVisibility(ImageView.GONE);
@@ -214,26 +219,42 @@ public class ViewAuction  extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(ViewAuction.this).setTitle("Start Auction");
-                final AlertDialog dialog = builder.setPositiveButton("START", new DialogInterface.OnClickListener() {
+                final AlertDialog alertDialog = new AlertDialog.Builder(ViewAuction.this).create();
+                View dialog_layout = getLayoutInflater().inflate(R.layout.design_layout, null);
+                // Create the text field in the alert dialog...
+                final EditText starting= (EditText) dialog_layout.findViewById(R.id.text1);
+                final EditText ending = (EditText) dialog_layout.findViewById(R.id.text2);
+                Button startbtn = dialog_layout.findViewById(R.id.button2);
+                Button cancelbtn = dialog_layout.findViewById(R.id.button3);
+                alertDialog.setCancelable(true);
+                cancelbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        System.out.println("Delete button clicked");
-                    }
-
-                }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        System.out.println("Cancel button clicked");
-                    }
-                }).create();
-                dialog.setOnShowListener( new DialogInterface.OnShowListener() {
-                    @Override
-                    public void onShow(DialogInterface arg0) {
-                        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.GREEN);
+                    public void onClick(View view) {
+                        alertDialog.cancel();
                     }
                 });
-                dialog.show();
+                startbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        item[0].setStartDate(new Date(starting.getText().toString()));
+                        item[0].setEndDate(new Date(ending.getText().toString()));
+                        Call<Void> callstart=restAPI.startItem(jwt,id,item[0]);
+                        callstart.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                System.out.println("STARTED");
+                                alertDialog.cancel();
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
+                alertDialog.setView(dialog_layout);
+                alertDialog.show();
             }
         });
     }

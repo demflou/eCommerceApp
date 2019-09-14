@@ -15,6 +15,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface RestAPI {
@@ -34,6 +35,9 @@ public interface RestAPI {
             @Part MultipartBody.Part file
     );
     */
+
+    @PUT("item/{id}")
+    Call<Void> startItem (@Header("Authorization") String token,@Path("id") Integer id, @Body myItem item);
 
     @DELETE("item/{id}")
     Call<Void> deleteItem (@Header("Authorization") String token,@Path("id") Integer id);
