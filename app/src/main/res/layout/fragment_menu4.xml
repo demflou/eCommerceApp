@@ -26,9 +26,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="52dp"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/transparent"
         android:clickable="true"
-        android:src="@android:drawable/ic_menu_add"
-        android:theme="@style/MyMaterialTheme.Base"
+        android:src="@drawable/plusbtn"
         app:elevation="4dp" />
 </RelativeLayout>

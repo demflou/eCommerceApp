@@ -71,8 +71,7 @@ android:paddingTop="@dimen/activity_vertical_margin" >
     android:layout_alignParentBottom="true"
     android:layout_alignParentRight="true"
     android:clickable="true"
-    android:theme="@style/MyMaterialTheme.Base"
-    android:background="@color/colorPrimary"
-    android:src="@android:drawable/ic_menu_add"
+    android:background="@android:color/transparent"
+    android:src="@drawable/plusbtn"
     app:elevation="4dp" />
 </RelativeLayout>

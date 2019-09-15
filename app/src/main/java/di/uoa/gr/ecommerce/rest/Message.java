@@ -50,7 +50,7 @@ public class Message {
         return fromUserID;
     }
 
-    public void setFromUserID(User fromUserID) {
+    public void setFromUserID(User  fromUserID) {
         this.fromUserID = fromUserID;
     }
 
