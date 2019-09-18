@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,10 +19,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -58,6 +60,12 @@ public class ViewAuction  extends AppCompatActivity {
     private ImageView image;
     private ImageButton delete;
     private ImageButton start;
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -176,9 +184,10 @@ public class ViewAuction  extends AppCompatActivity {
                                 final AlertDialog dialog = builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        System.out.println("OK");
-                                        Intent intent = new Intent(ViewAuction.this, Menu.class);
-                                        startActivity(intent);
+                                        finish();
+//                                        System.out.println("OK");
+//                                        Intent intent = new Intent(ViewAuction.this, Menu.class);
+//                                        startActivity(intent);
                                     }
 
                                 }).create();
@@ -236,21 +245,39 @@ public class ViewAuction  extends AppCompatActivity {
                 startbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        item[0].setStartDate(new Date(starting.getText().toString()));
-                        item[0].setEndDate(new Date(ending.getText().toString()));
-                        Call<Void> callstart=restAPI.startItem(jwt,id,item[0]);
-                        callstart.enqueue(new Callback<Void>() {
-                            @Override
-                            public void onResponse(Call<Void> call, Response<Void> response) {
-                                System.out.println("STARTED");
-                                alertDialog.cancel();
-                            }
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                        Date sDate = null;
+                        Date eDate = null;
+                        try {
+                            sDate = sdf.parse(starting.getText().toString());
+                            eDate=sdf.parse(ending.getText().toString());
+                            if(eDate.before(sDate)||eDate.before(new Date())||sDate.before(new Date()))
+                                Toast.makeText(ViewAuction.this,"Please provide correct dates",Toast.LENGTH_SHORT).show();
+                            else {
+                                for(myCat c:item[0].getCategoryCollection())
+                                    System.out.println("Cat is "+c.getName());
+                                item[0].setStartDate(sDate);
+                                item[0].setEndDate(eDate);
+                                Call<Void> callstart = restAPI.startItem(jwt, id, item[0]);
+                                callstart.enqueue(new Callback<Void>() {
+                                    @Override
+                                    public void onResponse(Call<Void> call, Response<Void> response) {
+                                        System.out.println("STARTED");
+                                        alertDialog.cancel();
+                                    }
 
-                            @Override
-                            public void onFailure(Call<Void> call, Throwable t) {
+                                    @Override
+                                    public void onFailure(Call<Void> call, Throwable t) {
 
+                                    }
+                                });
+                                finish();
                             }
-                        });
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                            Toast.makeText(ViewAuction.this,"Please provide correct dates",Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
                 alertDialog.setView(dialog_layout);

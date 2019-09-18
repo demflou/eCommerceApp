@@ -34,6 +34,12 @@ import retrofit2.Response;
 
 public class Menu extends AppCompatActivity {
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     private String jwt;
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -56,6 +62,8 @@ public class Menu extends AppCompatActivity {
         if(jwt==null){
             tabLayout.setVisibility(ViewPager.GONE);
             toolbar.setTitle(toolbar.getTitle()+"- Welcome Guest!");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            setSupportActionBar(toolbar);
 //            toolbar.setEnabled(false);
         }
         else{
@@ -63,6 +71,7 @@ public class Menu extends AppCompatActivity {
             String withoutSignature = jwt.substring(0, i+1);
             Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
             toolbar.setTitle(toolbar.getTitle()+"- Welcome "+untrusted.getBody().getSubject());
+            setSupportActionBar(toolbar);
             RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
             Call<Long> call = restAPI.countMsgs(jwt,untrusted.getBody().getSubject());
             call.enqueue(new Callback<Long>() {

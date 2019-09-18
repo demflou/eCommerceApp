@@ -32,6 +32,12 @@ public class NewMsg extends AppCompatActivity {
     private Toolbar toolbar;
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     protected void onDestroy(){
         super.onDestroy();
     }

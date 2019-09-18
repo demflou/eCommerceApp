@@ -17,9 +17,14 @@
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ViewAuction">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Menu"/>
+        <!--<meta-data-->
+            <!--android:name="android.support.PARENT_ACTIVITY"-->
+            <!--android:value=".Menu"/>-->
+        </activity>
+        <activity android:name=".BidAuction">
+        <!--<meta-data-->
+            <!--android:name="android.support.PARENT_ACTIVITY"-->
+            <!--android:value=".Menu"/>-->
         </activity>
         <activity
             android:name=".HomeActivity"

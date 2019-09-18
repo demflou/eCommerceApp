@@ -5,6 +5,11 @@
     android:gravity="center_horizontal" android:background="#ffffff"
     android:orientation="vertical" android:padding="10dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Provide dates in pattern dd/MM/yyyy HH:mm"/>
+
     <EditText
         android:id="@+id/text1"
         android:layout_width="fill_parent"

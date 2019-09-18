@@ -71,9 +71,8 @@ public class MenuFragment extends Fragment {
         newAuction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent reg = new Intent(requireContext(), HomeActivity.class);
-                reg.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(reg);
+            Intent reg = new Intent(requireContext(), HomeActivity.class);
+            startActivity(reg);
             }
         });
         if(jwt==null) {

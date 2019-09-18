@@ -321,6 +321,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             Intent login2 = new Intent(getApplicationContext(), Menu.class);
             startActivity(login2);
             super.onPostExecute(aVoid);
+            finish();
 //            Toast.makeText(getApplicationContext(),"Image Uploaded",Toast.LENGTH_SHORT).show();
         }
     }
@@ -366,6 +367,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             if(image==null) {
                 Intent login2 = new Intent(getApplicationContext(), Menu.class);
                 startActivity(login2);
+                super.onPostExecute(aVoid);
                 finish();
             }
             super.onPostExecute(aVoid);

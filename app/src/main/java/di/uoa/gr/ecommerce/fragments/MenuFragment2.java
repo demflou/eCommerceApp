@@ -1,6 +1,7 @@
 package di.uoa.gr.ecommerce.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import di.uoa.gr.ecommerce.BidAuction;
 import di.uoa.gr.ecommerce.ItemAdapter;
 import di.uoa.gr.ecommerce.R;
 import di.uoa.gr.ecommerce.client.RestAPI;
@@ -134,6 +136,17 @@ public class MenuFragment2 extends Fragment {
                             listView.setLayoutManager(llm);
                             listView.addItemDecoration(mDividerItemDecoration);
                             adapter.getFilter().filter(query);
+                            adapter.setOnItemClickListener(new ItemAdapter.ClickListener() {
+                                @Override
+                                public void onItemClick(int position, View v) {
+                                    if(list!=null) {
+                                        Intent intent = new Intent(requireContext(), BidAuction.class);
+//                                        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                        intent.putExtra("ItemID", list.get(position).getId());
+                                        startActivity(intent);
+                                    }
+                                }
+                            });
                             listView.setAdapter(adapter);
                         }
 
@@ -164,14 +177,13 @@ public class MenuFragment2 extends Fragment {
                         adapter.setOnItemClickListener(new ItemAdapter.ClickListener() {
                             @Override
                             public void onItemClick(int position, View v) {
-                                if(list!=null)
-                                    System.out.println("onItemClick position: " + list.get(position).getId());
+                                if(list!=null) {
+                                    Intent intent = new Intent(requireContext(), BidAuction.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                    intent.putExtra("ItemID", list.get(position).getId());
+                                    startActivity(intent);
+                                }
                             }
-
-//                    @Override
-//                    public void onItemLongClick(int position, View v) {
-//                        Log.d(TAG, "onItemLongClick pos = " + position);
-//                    }
                         });
                         adapter.notifyDataSetChanged();
                     }
@@ -228,14 +240,13 @@ public class MenuFragment2 extends Fragment {
                         adapter.setOnItemClickListener(new ItemAdapter.ClickListener() {
                             @Override
                             public void onItemClick(int position, View v) {
-                                if(list!=null)
-                                    System.out.println("onItemClick position: " + list.get(position).getId());
+                                if(list!=null) {
+                                    Intent intent = new Intent(requireContext(), BidAuction.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                    intent.putExtra("ItemID", list.get(position).getId());
+                                    startActivity(intent);
+                                }
                             }
-
-//                    @Override
-//                    public void onItemLongClick(int position, View v) {
-//                        Log.d(TAG, "onItemLongClick pos = " + position);
-//                    }
                         });
                         adapter.notifyDataSetChanged();
                     }
