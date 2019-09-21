@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -67,7 +66,9 @@ public class MenuFragment3 extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onResume(){
+        View view = getView();
         if(jwt==null) {
             SharedPreferences prefs = this.getActivity().getSharedPreferences("jwt", MODE_PRIVATE);
             String restoredText = prefs.getString("jwt", null);
@@ -147,6 +148,7 @@ public class MenuFragment3 extends Fragment {
                                      listView.setAdapter(adapter);
                                  }
                              });
+    super.onResume();
     }
 
 }

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -55,8 +54,11 @@ public class MenuFragment extends Fragment {
     }
 
     @SuppressLint("WrongConstant")
+//    @Override
+//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onResume(){
+        View view = getView();
         AppCompatImageButton newAuction = (AppCompatImageButton) view.findViewById(R.id.fab2);
         final RecyclerView listView = (RecyclerView) getView().findViewById(R.id.myAuctionsList);
         final List<myItem> list = null;
@@ -154,5 +156,6 @@ public class MenuFragment extends Fragment {
                 adapter.insert(null);
             }
         });
+        super.onResume();
     }
 }

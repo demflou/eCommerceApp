@@ -232,7 +232,7 @@ public class BidAuction extends AppCompatActivity {
                     bidder.setUsername(finalUserIn);
                     bid.setUser(bidder);
                     final myBid fBid = bid;
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(BidAuction.this).setTitle("Delete Message")
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(BidAuction.this).setTitle("Submit your bid ")
                             .setMessage("Are you sure you want to bid for this item?");
                     final AlertDialog dialog = builder.setPositiveButton("BID", new DialogInterface.OnClickListener() {
                         @Override
