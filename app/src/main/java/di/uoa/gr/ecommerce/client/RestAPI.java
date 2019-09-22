@@ -37,6 +37,9 @@ public interface RestAPI {
     );
     */
 
+    @PUT("messages/{id}")
+    Call<Void> editMsg (@Header("Authorization") String token,@Path("id") Integer id);
+
     @GET("user/check/{uname}")
     Call<Boolean> check(@Path("uname") String uname);
 

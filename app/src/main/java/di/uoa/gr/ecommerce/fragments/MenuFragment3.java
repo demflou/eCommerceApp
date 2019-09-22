@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -67,14 +68,14 @@ public class MenuFragment3 extends Fragment {
                         startActivity(intent);
                         return true;
                     case R.id.i2:
-                        final RestAPI ra = RestClient.getStringClient().create(RestAPI.class);
+                        final RestAPI ra2 = RestClient.getStringClient().create(RestAPI.class);
                         final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext()).setTitle("Delete Message")
                                 .setMessage("Are you sure you want to delete this message?");
                         final AlertDialog dialog = builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 System.out.println("Delete button clicked"+mnum);
-                                Call<Void> calldel=ra.deleteMsg(jwt,mnum);
+                                Call<Void> calldel=ra2.deleteMsg(jwt,mnum);
                                 calldel.enqueue(new Callback<Void>() {
                                     @Override
                                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -124,7 +125,21 @@ public class MenuFragment3 extends Fragment {
                         dialog.show();
                         return true;
                     case R.id.i3:
-                        Toast.makeText(getActivity(), "Message marked as seen", Toast.LENGTH_SHORT).show();
+                        RestAPI ra3 = RestClient.getStringClient().create(RestAPI.class);
+                        System.out.println("------------------------------------------------"+jwt);
+                        Call<Void> mas=ra3.editMsg(jwt,mnum);
+                        mas.enqueue(new Callback<Void>() {
+                                            @Override
+                                            public void onResponse(Call<Void> call, Response<Void> response) {
+
+                                                Toast.makeText(getActivity(), "Message marked as seen", Toast.LENGTH_SHORT).show();
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<Void> call, Throwable t) {
+                                                Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                         //mark as seen
                         return true;
 
@@ -208,11 +223,12 @@ public class MenuFragment3 extends Fragment {
                                      adapter.setOnItemClickListener(new MessageAdapter.ClickListener() {
                                             @Override
                                             public void onItemClick(int position, View v) {
-                                                if(response.body()!=null)
+                                                if(response.body()!=null) {
                                                     uto = response.body().get(position).getFromUserID().getUsername();
                                                     mnum = response.body().get(position).getId();
                                                     showMenu(v);
 //                                                    System.out.println("onItemClick position: " + response.body().get(position).getId());
+                                                }
                                             }
 
                                             @Override
