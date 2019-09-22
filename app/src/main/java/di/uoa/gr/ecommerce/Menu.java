@@ -3,7 +3,6 @@ package di.uoa.gr.ecommerce;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,10 +44,14 @@ public class Menu extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+//    protected void onCreate(Bundle savedInstanceState) {
+            protected void onResume(){
+//        super.onCreate(savedInstanceState);
+        super.onResume();
         setContentView(R.layout.activity_menu);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
