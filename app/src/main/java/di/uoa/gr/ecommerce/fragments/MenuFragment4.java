@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
@@ -56,7 +55,9 @@ public class MenuFragment4 extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onResume(){
+        View view =getView();
         if(jwt==null) {
             SharedPreferences prefs = this.getActivity().getSharedPreferences("jwt", MODE_PRIVATE);
             String restoredText = prefs.getString("jwt", null);
@@ -204,5 +205,6 @@ public class MenuFragment4 extends Fragment {
                 listView.setAdapter(adapter);
             }
         });
+        super.onResume();
     }
 }

@@ -76,9 +76,9 @@ public class    MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-        prefs.edit().clear().commit();
-        System.out.println("DESTROYED");
+//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+//        prefs.edit().clear().commit();
+//        System.out.println("DESTROYED");
         super.onDestroy();
     }
 
@@ -117,6 +117,7 @@ public class    MainActivity extends AppCompatActivity {
                             System.out.println(editor.commit()+" coomit true");
                             Intent login2 = new Intent(getApplicationContext(), Menu.class);
                             startActivity(login2);
+                            finish();
                         }
                         else{
                             Toast.makeText(MainActivity.this, "Wrong Login details", Toast.LENGTH_SHORT).show();
@@ -153,6 +154,8 @@ public class    MainActivity extends AppCompatActivity {
         Guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
+            prefs.edit().clear().commit();
             Intent reg = new Intent(MainActivity.this, Menu.class);
             startActivity(reg);
             }

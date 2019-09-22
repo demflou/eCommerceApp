@@ -6,6 +6,7 @@ import java.util.List;
 import di.uoa.gr.ecommerce.rest.Login;
 import di.uoa.gr.ecommerce.rest.Message;
 import di.uoa.gr.ecommerce.rest.User;
+import di.uoa.gr.ecommerce.rest.myBid;
 import di.uoa.gr.ecommerce.rest.myCat;
 import di.uoa.gr.ecommerce.rest.myItem;
 import okhttp3.RequestBody;
@@ -36,6 +37,12 @@ public interface RestAPI {
     );
     */
 
+    @GET("user/check/{uname}")
+    Call<Boolean> check(@Path("uname") String uname);
+
+    @POST("bids")
+    Call<Void> bid(@Header("Authorization") String token,@Body myBid bid);
+
     @PUT("item/{id}")
     Call<Void> startItem (@Header("Authorization") String token,@Path("id") Integer id, @Body myItem item);
 
@@ -51,7 +58,7 @@ public interface RestAPI {
     @GET("category/ibc/{category}")
     Call<List<myItem>> findByCat(@Path("category") String category);
 
-    @GET("item/images/{id}")
+    @GET("images/item/{id}")
     Call<String> getImage(@Path("id") Integer id);
 
     @GET("messages/count/{to}")

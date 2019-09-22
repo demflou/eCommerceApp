@@ -37,6 +37,12 @@ public class NewMsg extends AppCompatActivity {
     public Integer num;
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     protected void onDestroy(){
         super.onDestroy();
     }
