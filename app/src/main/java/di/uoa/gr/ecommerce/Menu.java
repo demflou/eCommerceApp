@@ -45,7 +45,33 @@ public class Menu extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    public void reloadMsgs(){
+        int i = jwt.lastIndexOf('.');
+        String withoutSignature = jwt.substring(0, i+1);
+        Jwt<Header, Claims> untrusted = Jwts.parser().parseClaimsJwt(withoutSignature);
+        RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
+        Call<Long> call = restAPI.countMsgs(jwt,untrusted.getBody().getSubject());
+        call.enqueue(new Callback<Long>() {
+            @SuppressLint("ResourceAsColor")
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(Call<Long> call, Response<Long> response) {
+                System.out.println("MESSAGES !!!!!!!!!!!!!!!!"+response.body());
+                if(response.body()!=0) {
+                    tabLayout.getTabAt(2).showBadge().setBackgroundColor(R.color.colorPrimary);
+                    tabLayout.getTabAt(2).showBadge().setNumber(response.body().intValue());
+                }
+                else{
+                    tabLayout.getTabAt(2).removeBadge();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<Long> call, Throwable t) {
+
+            }
+        });
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
