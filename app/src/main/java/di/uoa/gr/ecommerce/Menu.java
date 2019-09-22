@@ -45,10 +45,14 @@ public class Menu extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//            protected void onResume(){
         super.onCreate(savedInstanceState);
+//        super.onResume();
         setContentView(R.layout.activity_menu);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
