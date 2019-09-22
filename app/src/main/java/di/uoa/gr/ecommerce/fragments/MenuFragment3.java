@@ -83,8 +83,7 @@ public class MenuFragment3 extends Fragment {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 System.out.println("OK");
-                                                Intent intent = new Intent(requireContext(), Menu.class);
-                                                startActivity(intent);
+                                                Toast.makeText (getActivity(), "Message Deleted", Toast.LENGTH_SHORT).show();
                                             }
 
                                         }).create();
