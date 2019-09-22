@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -85,6 +84,8 @@ public class MenuFragment3 extends Fragment {
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 System.out.println("OK");
                                                 Toast.makeText (getActivity(), "Message Deleted", Toast.LENGTH_SHORT).show();
+                                                ((Menu)getActivity()).reloadMsgs();
+                                                onResume();
                                             }
 
                                         }).create();
@@ -133,6 +134,8 @@ public class MenuFragment3 extends Fragment {
                                             public void onResponse(Call<Void> call, Response<Void> response) {
 
                                                 Toast.makeText(getActivity(), "Message marked as seen", Toast.LENGTH_SHORT).show();
+                                                ((Menu)getActivity()).reloadMsgs();
+                                                onResume();
                                             }
 
                                             @Override
