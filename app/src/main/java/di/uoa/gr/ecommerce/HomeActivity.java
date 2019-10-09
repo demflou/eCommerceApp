@@ -157,9 +157,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onDestroy() {
-//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-//        prefs.edit().clear().commit();
-//        System.out.println("DESTROYED");
         super.onDestroy();
     }
 
@@ -173,15 +170,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(jwt==null) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
             String restoredText = preferences.getString("jwt", null);
             jwt = restoredText;
         }
         System.out.println("from auction page jwt = "+jwt);
-//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-//        String restoredText = prefs.getString("jwt", null);
-//        jwt = restoredText;
-//        System.out.println("from auction page jwt = "+jwt);
 
         iName=(EditText)findViewById(R.id.NameItem);
         iStPrice=(EditText)findViewById(R.id.StartingPrice);
@@ -268,10 +260,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                  }
                  else
                      new RegisterTaskItem2(newItem,null).execute();
-
-//                 EditText iCategories;
-
-//                 new RegisterTaskItem(imageInByte,3,4).execute();
                  break;
          }
     }
@@ -322,7 +310,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(login2);
             super.onPostExecute(aVoid);
             finish();
-//            Toast.makeText(getApplicationContext(),"Image Uploaded",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -371,14 +358,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
             }
             super.onPostExecute(aVoid);
-//            Toast.makeText(getApplicationContext(),"Image Uploaded",Toast.LENGTH_SHORT).show();
         }
     }
-
-//    private HttpParams getHttpReqParams(){
-//        HttpParams httpReqParams = new BasicHttpParams();
-//        HttpConnectionParams.setConnectionTimeout(httpReqParams,1000*30);
-//        HttpConnectionParams.setSoTimeout(httpReqParams,1000*30);
-//        return httpReqParams;
-//    }
 }

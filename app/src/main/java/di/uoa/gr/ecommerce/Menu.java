@@ -76,9 +76,7 @@ public class Menu extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//            protected void onResume(){
         super.onCreate(savedInstanceState);
-//        super.onResume();
         setContentView(R.layout.activity_menu);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -94,7 +92,6 @@ public class Menu extends AppCompatActivity {
             toolbar.setTitle(toolbar.getTitle()+"- Welcome Guest!");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             setSupportActionBar(toolbar);
-//            toolbar.setEnabled(false);
         }
         else{
             int i = jwt.lastIndexOf('.');
@@ -127,9 +124,6 @@ public class Menu extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-//        prefs.edit().clear().commit();
-//        System.out.println("DESTROYED");
         super.onDestroy();
     }
 

@@ -54,8 +54,6 @@ public class MenuFragment extends Fragment {
     }
 
     @SuppressLint("WrongConstant")
-//    @Override
-//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     @Override
     public void onResume(){
         View view = getView();
@@ -102,9 +100,7 @@ public class MenuFragment extends Fragment {
                     try {
                         List<myItem> listMessages = response.body();
                         mobileArray = new String[listMessages.size()];
-//                                             mobileArray = listMessages.toArray(new String[0]);
                         for (int i=0;i< listMessages.size();i++) {
-//                            list.add(listMessages.get(i));
                             mobileArray[i]=listMessages.get(i).getName();
                         }
                     } catch (Exception e) {
@@ -116,10 +112,6 @@ public class MenuFragment extends Fragment {
                 for (String c : mobileArray){
                     System.out.println(c);
                 }
-//                ArrayAdapter adapter = new ArrayAdapter<String>(requireContext(),
-//                        R.layout.test_list_item, mobileArray);
-//
-//                ListView listView = (ListView) getView().findViewById(R.id.myAuctionsList);
                 ItemAdapter adapter = (ItemAdapter) listView.getAdapter();
                 adapter.insert(response.body());
                 System.out.println(adapter.getItemCount()+ " is size");

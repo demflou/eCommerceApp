@@ -76,9 +76,6 @@ public class    MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-//        prefs.edit().clear().commit();
-//        System.out.println("DESTROYED");
         super.onDestroy();
     }
 
@@ -98,7 +95,6 @@ public class    MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             try {
-                //new LoginTask(MainActivity.this,getApplicationContext()).execute(username.getText().toString(), AESCrypt.encrypt(password.getText().toString()));
                 RestAPI restAPI =
                         RestClient.getStringClient().create(RestAPI.class);
                 Login login = new Login();
@@ -129,15 +125,10 @@ public class    MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-//                Call<String> call = restAPI.login(login);
-//                String res = call.execute().body();
                 SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
                 String restoredText = prefs.getString("jwt", null);
                 System.out.println("main jwt on click = "+restoredText);
-//                Intent login2 = new Intent (getApplicationContext(), Menu.class);
-//                startActivity(login2);
             } catch (Exception e) {
-
                 e.printStackTrace();
             }
             }
@@ -161,19 +152,5 @@ public class    MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    /*public void login(View view)
-    {
-        EditText username = (EditText)findViewById(R.id.editText1);
-        EditText password = (EditText)findViewById(R.id.editText2);
-        new LoginTask().execute(username.getText().toString(), password.getText().toString());
-    }*/
-
-        /*private void validate (String username, String pass) {
-            if ((username.equals("Kokos")) && (pass.equals("1234"))) {
-                Intent login = new Intent (MainActivity.this, HomeActivity.class);
-                startActivity(login);
-            }
-        }*/
-    }
+}
 

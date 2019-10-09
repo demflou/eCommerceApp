@@ -43,8 +43,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 
 public class MenuFragment3 extends Fragment {
-//    String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
-//            "WebOS","Ubuntu","Windows7","Max OS X"};
     public String jwt ;
     public String uto;
     public Integer mnum;
@@ -89,12 +87,9 @@ public class MenuFragment3 extends Fragment {
                                             }
 
                                         }).create();
-//2. now setup to change color of the button
                                         dialog.setOnShowListener( new DialogInterface.OnShowListener() {
                                             @Override
                                             public void onShow(DialogInterface arg0) {
-//                                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.RED);
-//                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.GREEN);
                                             }
                                         });
 
@@ -114,12 +109,10 @@ public class MenuFragment3 extends Fragment {
                                 System.out.println("Cancel button clicked"+mnum);
                             }
                         }).create();
-//2. now setup to change color of the button
                         dialog.setOnShowListener( new DialogInterface.OnShowListener() {
                             @Override
                             public void onShow(DialogInterface arg0) {
                                 dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.RED);
-//                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.GREEN);
                             }
                         });
 
@@ -230,7 +223,6 @@ public class MenuFragment3 extends Fragment {
                                                     uto = response.body().get(position).getFromUserID().getUsername();
                                                     mnum = response.body().get(position).getId();
                                                     showMenu(v);
-//                                                    System.out.println("onItemClick position: " + response.body().get(position).getId());
                                                 }
                                             }
 

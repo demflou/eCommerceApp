@@ -33,7 +33,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> im
     private static ClickListener clickListener;
 
     public static class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        // each data item is just a string in this case
         public TextView title;
         public TextView price;
         public TextView ends;
@@ -55,12 +54,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> im
             clickListener.onItemClick(getAdapterPosition(), v);
         }
 
-//        @Override
-//        public boolean onLongClick(View v) {
-//            clickListener.onItemLongClick(getAdapterPosition(), v);
-//            return false;
-//        }
-
         private void setItemDetails(final myItem item) {
             if (item == null)
                 return;
@@ -71,14 +64,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> im
                 tprice = "FROM:\n" + item.getCurrentPrice() + " EUR";
             else
                 tprice = "FROM:\n" + item.getFirstBid() + " EUR";
-//            System.out.println(tprice);
             price.setText(tprice);
             String tends;
             if (item.getEndDate() != null)
                 tends = "UNTIL:\n" + item.getEndDate().toString();
             else
                 tends = "Not yet started";
-//            System.out.println(tends);
             ends.setText(tends);
             RestAPI restAPI = RestClient.getStringClient().create(RestAPI.class);
             Call<String> call = restAPI.getImage(item.getId());
@@ -111,7 +102,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> im
 
     public interface ClickListener {
         void onItemClick(int position, View v);
-//        void onItemLongClick(int position, View v);
     }
 
     public void insert(List<myItem> myD) {

@@ -185,18 +185,12 @@ public class ViewAuction  extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         finish();
-//                                        System.out.println("OK");
-//                                        Intent intent = new Intent(ViewAuction.this, Menu.class);
-//                                        startActivity(intent);
                                     }
 
                                 }).create();
-//2. now setup to change color of the button
                                 dialog.setOnShowListener( new DialogInterface.OnShowListener() {
                                     @Override
                                     public void onShow(DialogInterface arg0) {
-//                                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.RED);
-//                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.GREEN);
                                     }
                                 });
 

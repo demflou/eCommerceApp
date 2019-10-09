@@ -114,8 +114,6 @@ public class BidAuction extends AppCompatActivity {
                 System.out.println("RESPONSE");
                 item[0] = response.body();
                 toolbar.setTitle(response.body().getName());
-//                if (response.body().getNumofbids() == null || response.body().getNumofbids() <= 0)
-//                    bidLayout.setVisibility(LinearLayout.GONE);
                 String withoutSignature;
                 int i;
                 String userIn = null;
@@ -137,13 +135,11 @@ public class BidAuction extends AppCompatActivity {
                 if (response.body().getStartDate() == null)
                     FromDate.setText(Html.fromHtml("<b>Started on:</b> -"));
                 else {
-//                    bidLayout.setVisibility(LinearLayout.GONE);
                     FromDate.setText(Html.fromHtml("<b>Started on:</b> " + response.body().getStartDate().toString()));
                 }
                 if (response.body().getEndDate() == null)
                     EndDate.setText(Html.fromHtml("<b>Ending on:</b> -"));
                 else {
-//                    bidLayout.setVisibility(LinearLayout.GONE);
                     EndDate.setText(Html.fromHtml("<b>Ending on:</b> " + response.body().getEndDate().toString()));
                 }
                 Date today = new Date();

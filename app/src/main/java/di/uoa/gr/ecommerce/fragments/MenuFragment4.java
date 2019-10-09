@@ -55,7 +55,6 @@ public class MenuFragment4 extends Fragment {
     }
 
     @Override
-//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     public void onResume(){
         View view =getView();
         if(jwt==null) {
@@ -98,25 +97,6 @@ public class MenuFragment4 extends Fragment {
 
                             public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
                                 final Message o = response.body().get(position);
-                                /*DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        switch (which){
-                                            case DialogInterface.BUTTON_POSITIVE:
-                                                System.out.println("Yes button clicked");
-                                                break;
-
-                                            case DialogInterface.BUTTON_NEGATIVE:
-                                                System.out.println("No button clicked");
-                                                break;
-                                        }
-                                    }
-                                };
-                                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-                                AlertDialog dialog = builder.setTitle("Delete Message").setMessage("Are you sure?").setPositiveButton("Delete", dialogClickListener)
-                                        .setNegativeButton("Cancel", dialogClickListener).create();
-//                                dialog.getButton(0).setBackgroundColor(Color.RED);
-//                                dialog.getButton(1).setBackgroundColor(Color.GREEN);*/
                                 final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext()).setTitle("Delete Message")
                                         .setMessage("Are you sure you want to delete this message?");
                                 final AlertDialog dialog = builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
@@ -137,12 +117,9 @@ public class MenuFragment4 extends Fragment {
                                                     }
 
                                                 }).create();
-//2. now setup to change color of the button
                                                 dialog.setOnShowListener( new DialogInterface.OnShowListener() {
                                                     @Override
                                                     public void onShow(DialogInterface arg0) {
-//                                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.RED);
-//                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.GREEN);
                                                     }
                                                 });
 
@@ -162,12 +139,10 @@ public class MenuFragment4 extends Fragment {
                                         System.out.println("Cancel button clicked"+o.getId());
                                     }
                                 }).create();
-//2. now setup to change color of the button
                                 dialog.setOnShowListener( new DialogInterface.OnShowListener() {
                                     @Override
                                     public void onShow(DialogInterface arg0) {
                                         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.RED);
-//                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.GREEN);
                                     }
                                 });
 

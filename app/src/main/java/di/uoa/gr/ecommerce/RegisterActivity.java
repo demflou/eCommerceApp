@@ -82,9 +82,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-//        SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
-//        prefs.edit().clear().commit();
-//        System.out.println("DESTROYED");
         super.onDestroy();
     }
 
@@ -145,8 +142,6 @@ public class RegisterActivity extends AppCompatActivity {
                 String[] params = {username.getText().toString(), password.getText().toString(), cpassword.getText().toString(), name.getText().toString(), surname.getText().toString(), email.getText().toString(),telephone.getText().toString(), afm.getText().toString(), address.getText().toString(), country.getText().toString(), gloc.getText().toString()};
 
                 new RegisterTask().execute(params);
-                //Intent reg = new Intent(RegisterActivity.this, HomeActivity.class);
-                //startActivity(reg);
             }
         });
     }
@@ -193,9 +188,6 @@ public class RegisterActivity extends AppCompatActivity {
                         switch (res) {
                             case 0:
                                 try {
-                                    //new LoginTask(RegisterActivity.this,getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
-//                                    RestAPI restAPI =
-//                                            RestClient.getStringClient().create(RestAPI.class);
                                     Login login = new Login();
                                     login.setUsername(newUser.getUsername());
                                     login.setPassword(newUser.getPassword().trim());
@@ -223,8 +215,6 @@ public class RegisterActivity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                                         }
                                     });
-//                Call<String> call = restAPI.login(login);
-//                String res = call.execute().body();
                                     SharedPreferences prefs = getSharedPreferences("jwt", MODE_PRIVATE);
                                     String restoredText = prefs.getString("jwt", null);
                                     System.out.println("main jwt on click = "+restoredText);
@@ -246,7 +236,6 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                     else{
-//                        APIError error=ErrorUtils.parseError(response);
                         Toast.makeText(RegisterActivity.this,"Unknown error",Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -256,60 +245,12 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Server connection error",Toast.LENGTH_SHORT).show();
                 }
             });
-            /*Call<User> call = restAPI.register(newUser);
-            call.enqueue(new Callback<User>() {
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    if(response.isSuccessful()){
-                        try {
-                            System.out.println("HHHEHEHE");
-                            new LoginTask(getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    else{
-                        Toast.makeText(RegisterActivity.this,"server returned error",Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Toast.makeText(RegisterActivity.this,"server connection error",Toast.LENGTH_SHORT).show();
-                }
-            });
-            */
-
-            /*try {
-                Response<String> resp = call.execute();
-            } catch (IOException e) {
-                System.out.println("OUPS");
-                e.printStackTrace();
-                return null;
-            }*/
             return null;
         }
 
         @Override
         protected void onPostExecute(User newUser) {
-            /*if (newUser!=null) {
-                try {
-                    new LoginTask(getApplicationContext()).execute(newUser.getUsername(), newUser.getPassword());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("error in post execution of register");
-            }*/
-            //        MainActivity.this.token = retToken;
-            //        if (token != null && !token.equals("not")) {
-            //            System.out.println(token);
-            //            SharedPreferences.Editor editor = getSharedPreferences("jwt", MODE_PRIVATE).edit();
-            //            editor.putString("jwt",retToken);
-            //            editor.apply();
-            //            Intent login = new Intent (MainActivity.this, HomeActivity.class);
-            //            startActivity(login);
-            //        }
+
         }
     }
 }
